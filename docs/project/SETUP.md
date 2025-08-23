@@ -17,9 +17,9 @@ Make sure you have [git](http://git-scm.com/), [NodeJS](nodejs.org) and [npm](ht
 
 The following projects from the [bpmn-io](https://github.com/bpmn-io) project on GitHub
 
-* [cmmn-js](https://github.com/bpmn-io/cmmn-js)
+* [cmmn-js](https://github.com/jylups/cmmn-js)
 * [diagram-js](https://github.com/bpmn-io/diagram-js)
-* [cmmn-moddle](https://github.com/bpmn-io/cmmn-moddle)
+* [cmmn-moddle](https://github.com/jylups/cmmn-moddle)
 * [moddle](https://github.com/bpmn-io/moddle)
 * [moddle-xml](https://github.com/bpmn-io/moddle-xml)
 

@@ -11,8 +11,8 @@ echo cloning repositories
 git clone git@github.com:bpmn-io/diagram-js.git
 git clone git@github.com:bpmn-io/moddle.git
 git clone git@github.com:bpmn-io/moddle-xml.git
-git clone git@github.com:bpmn-io/cmmn-js.git
-git clone git@github.com:bpmn-io/cmmn-moddle.git
+git clone git@github.com:jylups/cmmn-js.git
+git clone git@github.com:jylups/cmmn-moddle.git
 
 echo done.
 

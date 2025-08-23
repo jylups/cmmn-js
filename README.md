@@ -7,13 +7,13 @@ View and edit CMMN 1.1 diagrams in the browser.
 
 ## Installation
 
-Use the library [pre-packaged](https://github.com/bpmn-io/cmmn-js-examples/tree/master/pre-packaged)
-or include it [via npm](https://github.com/bpmn-io/cmmn-js-examples/tree/master/bundling)
+Use the library [pre-packaged](https://github.com/jylups/cmmn-js-examples/tree/master/pre-packaged)
+or include it [via npm](https://github.com/jylups/cmmn-js-examples/tree/master/bundling)
 into your node-style web-application.
 
 ## Usage
 
-To get started, create a [cmmn-js](https://github.com/bpmn-io/cmmn-js) instance
+To get started, create a [cmmn-js](https://github.com/jylups/cmmn-js) instance
 and render [CMMN 1.1 diagrams](http://www.omg.org/spec/CMMN/1.1/) in the browser:
 
 ```javascript
@@ -32,7 +32,7 @@ viewer.importXML(xml, function(err) {
 });
 ```
 
-Checkout our [examples](https://github.com/bpmn-io/cmmn-js-examples) for many
+Checkout our [examples](https://github.com/jylups/cmmn-js-examples) for many
 more supported usage scenarios.
 
 
@@ -54,8 +54,8 @@ viewer.detach();
 ## Resources
 
 *   [Demo](http://demo.bpmn.io/cmmn)
-*   [Issues](https://github.com/bpmn-io/cmmn-js/issues)
-*   [Examples](https://github.com/bpmn-io/cmmn-js-examples)
+*   [Issues](https://github.com/jylups/cmmn-js/issues)
+*   [Examples](https://github.com/jylups/cmmn-js-examples)
 *   [Forum](https://forum.bpmn.io)
 
 
@@ -80,7 +80,7 @@ file an issue or pull request.
 
 cmmn-js builds on top of a few additional powerful tools:
 
-* [cmmn-moddle](https://github.com/bpmn-io/cmmn-moddle): Read / write support for CMMN 1.1 XML in the browsers
+* [cmmn-moddle](https://github.com/jylups/cmmn-moddle): Read / write support for CMMN 1.1 XML in the browsers
 * [diagram-js](https://github.com/bpmn-io/diagram-js): Diagram rendering and editing toolkit
 
 
