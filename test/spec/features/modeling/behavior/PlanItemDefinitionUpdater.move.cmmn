@@ -16,12 +16,12 @@
 
       <cmmn:stage id="Stage_1">
 
-        <cmmn:planItem definitionRef="1_Task" id="PI_Task_1" />
-        <cmmn:planItem definitionRef="2_Stage" id="PI_Stage_3" />
+        <cmmn:planItem definitionRef="Task_1" id="PI_Task_1" />
+        <cmmn:planItem definitionRef="Stage_3" id="PI_Stage_3" />
 
-        <cmmn:task id="1_Task" />
-        <cmmn:stage id="2_Stage">
-          <cmmn:planItem definitionRef="1_Task" id="PI_Task_2" />
+        <cmmn:task id="Task_1" />
+        <cmmn:stage id="Stage_3">
+          <cmmn:planItem definitionRef="Task_1" id="PI_Task_2" />
         </cmmn:stage>
 
       </cmmn:stage>
