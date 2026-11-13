@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cmmn:definitions id="Test"
+                  targetNamespace="http://bpmn.io/schema/cmmn"
+                  xmlns:dc="http://www.omg.org/spec/CMMN/20151109/DC"
+                  xmlns:di="http://www.omg.org/spec/CMMN/20151109/DI"
+                  xmlns:cmmndi="http://www.omg.org/spec/CMMN/20151109/CMMNDI"
+                  xmlns:cmmn="http://www.omg.org/spec/CMMN/20151109/MODEL"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!--
+    Exit_2 and TextAnnotation_2 have no shape, so the edges that reference
+    them (PlanItemOnPart_2_di and Association_1_di) cannot be drawn. They come
+    first in the DI, before the valid edges PlanItemOnPart_1_di and
+    Association_2_di.
+  -->
+
+  <cmmn:case id="Case_1">
+    <cmmn:casePlanModel name="A CasePlanModel" id="CasePlanModel_1">
+      <cmmn:planItem definitionRef="Task_1" id="PI_Task_1" />
+      <cmmn:planItem definitionRef="Task_1" id="PI_Task_2">
+        <cmmn:exitCriterion sentryRef="Sentry_1" id="Exit_1" />
+      </cmmn:planItem>
+      <cmmn:planItem definitionRef="Task_1" id="PI_Task_3">
+        <cmmn:exitCriterion sentryRef="Sentry_2" id="Exit_2" />
+      </cmmn:planItem>
+
+      <cmmn:sentry id="Sentry_1">
+        <cmmn:planItemOnPart id="PlanItemOnPart_1" sourceRef="PI_Task_1" />
+      </cmmn:sentry>
+      <cmmn:sentry id="Sentry_2">
+        <cmmn:planItemOnPart id="PlanItemOnPart_2" sourceRef="PI_Task_1" />
+      </cmmn:sentry>
+
+      <cmmn:humanTask name="Human Task" id="Task_1" />
+    </cmmn:casePlanModel>
+  </cmmn:case>
+  <cmmn:textAnnotation id="TextAnnotation_1">
+    <cmmn:text>A</cmmn:text>
+  </cmmn:textAnnotation>
+  <cmmn:textAnnotation id="TextAnnotation_2">
+    <cmmn:text>B</cmmn:text>
+  </cmmn:textAnnotation>
+  <cmmn:association id="Association_1" sourceRef="PI_Task_1" targetRef="TextAnnotation_2" />
+  <cmmn:association id="Association_2" sourceRef="PI_Task_2" targetRef="TextAnnotation_1" />
+  <cmmndi:CMMNDI>
+    <cmmndi:CMMNDiagram id="Diagram_1">
+      <cmmndi:Size height="500" width="700"/>
+      <cmmndi:CMMNShape cmmnElementRef="CasePlanModel_1" id="DI_CasePlanModel_1">
+        <dc:Bounds height="400" width="450" x="25" y="25"/>
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape cmmnElementRef="PI_Task_1" id="DI_PI_Task_1">
+        <dc:Bounds height="76.0" width="97.0" x="100" y="100"/>
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape cmmnElementRef="PI_Task_2" id="DI_PI_Task_2">
+        <dc:Bounds height="76.0" width="97.0" x="300" y="100"/>
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape cmmnElementRef="PI_Task_3" id="DI_PI_Task_3">
+        <dc:Bounds height="76.0" width="97.0" x="300" y="250"/>
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape cmmnElementRef="Exit_1" id="DI_Exit_1">
+        <dc:Bounds height="28.0" width="20.0" x="290" y="124"/>
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape cmmnElementRef="TextAnnotation_1" id="DI_TextAnnotation_1">
+        <dc:Bounds height="80" width="100" x="550" y="100"/>
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNEdge cmmnElementRef="PlanItemOnPart_2" targetCMMNElementRef="Exit_2" id="PlanItemOnPart_2_di">
+        <di:waypoint x="197" y="138"/>
+        <di:waypoint x="290" y="288"/>
+      </cmmndi:CMMNEdge>
+      <cmmndi:CMMNEdge cmmnElementRef="PlanItemOnPart_1" targetCMMNElementRef="Exit_1" id="PlanItemOnPart_1_di">
+        <di:waypoint x="197" y="138"/>
+        <di:waypoint x="290" y="138"/>
+      </cmmndi:CMMNEdge>
+      <cmmndi:CMMNEdge cmmnElementRef="Association_1" id="Association_1_di">
+        <di:waypoint x="148" y="176"/>
+        <di:waypoint x="148" y="450"/>
+      </cmmndi:CMMNEdge>
+      <cmmndi:CMMNEdge cmmnElementRef="Association_2" id="Association_2_di">
+        <di:waypoint x="397" y="138"/>
+        <di:waypoint x="550" y="138"/>
+      </cmmndi:CMMNEdge>
+    </cmmndi:CMMNDiagram>
+  </cmmndi:CMMNDI>
+</cmmn:definitions>

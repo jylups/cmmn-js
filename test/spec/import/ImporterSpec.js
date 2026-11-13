@@ -131,6 +131,40 @@ describe('Importer', function() {
   });
 
 
+  it('should import remaining connections when a connection cannot be drawn', function(done) {
+
+    var xml = require('./Importer.broken-connections.cmmn');
+
+    modeler.importXML(xml, function(err, warnings) {
+
+      if (err) {
+        return done(err);
+      }
+
+      var elementRegistry = modeler.get('elementRegistry');
+
+      // the broken edges are reported as warnings ...
+      expect(warnings).to.have.length(2);
+
+      expect(warnings[0].message).to.contain('<cmmn:ExitCriterion id="Exit_2" />');
+      expect(warnings[0].message).to.contain('not yet drawn');
+
+      expect(warnings[1].message).to.contain('<cmmn:TextAnnotation id="TextAnnotation_2" />');
+      expect(warnings[1].message).to.contain('not yet drawn');
+
+      expect(elementRegistry.get('PlanItemOnPart_2_di')).not.to.exist;
+      expect(elementRegistry.get('Association_1_di')).not.to.exist;
+
+      // ... and the edges after them are still drawn
+      expect(elementRegistry.get('PlanItemOnPart_1_di')).to.exist;
+      expect(elementRegistry.get('Association_2_di')).to.exist;
+
+      done();
+    });
+
+  });
+
+
   it('should import discretionary item referenced by multiple plan items', function(done) {
 
     var xml = require('./Importer.multiple-discretionary-connection.cmmn');
