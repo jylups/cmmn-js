@@ -1,0 +1,54 @@
+name: Publish to npm
+
+# Publishes @jylups/cmmn-js when a GitHub release is published.
+# The release tag must match the package.json version (v0.21.0 for 0.21.0).
+#
+# npm authenticates this workflow with trusted publishing (OIDC), so no npm
+# token is stored in the repository. The package's trusted publisher on
+# npmjs.com must name jylups/cmmn-js, this file (publish.yml) and allow
+# npm publish. npm also generates a provenance statement for each version.
+
+on:
+  release:
+    types: [ published ]
+
+permissions:
+  contents: read
+  # lets npm request a short-lived publish token for this run
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '26'
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Check release tag matches package version
+      run: |
+        VERSION="v$(node -p "require('./package.json').version")"
+        if [ "$VERSION" != "$GITHUB_REF_NAME" ]; then
+          echo "release tag $GITHUB_REF_NAME does not match package version $VERSION"
+          exit 1
+        fi
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Lint and test
+      run: npm run all
+
+    - name: Check package contents
+      run: npm pack --dry-run
+
+    # prepublishOnly builds dist/ again and tests it before the upload;
+    # trusted publishing needs npm 11.5.1 or later, Node 26 includes it
+    - name: Publish
+      run: npm publish
