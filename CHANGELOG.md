@@ -7,7 +7,8 @@ All notable changes to [@jylups/cmmn-js](https://github.com/jylups/cmmn-js) are 
 ___Note:__ Yet to be released changes appear here._
 
 * `CHORE`: publish prerelease versions under the `next` dist-tag
-* `DEPS`: update to `diagram-js@8.9.0`
+* `DEPS`: update to `diagram-js@12.8.1`, `diagram-js-direct-editing@2.1.2`, `min-dash@4`, `min-dom@4` and `tiny-svg@3`
+* `CHORE`: provide replace menu entries through the `getPopupMenuEntries` and `getPopupMenuHeaderEntries` methods of the popup menu provider interface
 * `FEAT`: keep criteria attached to a stage or case plan model in place when it is resized, if possible
 * `FIX`: show the day of the month in the build date of the distribution banner
 * `CHORE`: build the distribution with Rollup and Babel 7, and bundle the tests with webpack 5, instead of browserify and Babel 6
@@ -24,6 +25,14 @@ diagram-js [7](https://github.com/bpmn-io/diagram-js/blob/develop/CHANGELOG.md#7
 
 * `element.mousedown`, `element.mouseup`, `element.click` and `element.dblclick` also fire for the auxiliary (middle) mouse button. Listeners that should only react to the primary button must check it, for example with `isPrimaryButton` from `diagram-js/lib/util/Mouse`.
 * The canvas supports several root elements. `Canvas#setRootElement` adds and shows a root instead of replacing the current one; to replace it, set the new root and remove the old one with `Canvas#removeRootElement`.
+
+diagram-js [9](https://github.com/bpmn-io/diagram-js/blob/develop/CHANGELOG.md#900) to [12](https://github.com/bpmn-io/diagram-js/blob/develop/CHANGELOG.md#1200):
+
+* diagram-js and its helper libraries ship ES2018 code. The `dist/` bundles are still transpiled to ES5; applications that bundle `lib/` themselves must transpile these dependencies if they support older browsers.
+* `ReplaceMenuProvider#getEntries` and `#getHeaderEntries` are replaced by `#getPopupMenuEntries` and `#getPopupMenuHeaderEntries`, which return the entries as an object by ID.
+* The markup and CSS classes of the popup menu changed, and `.djs-parent` replaces `.djs-container` as the root selector of the canvas and the popup menu.
+* Model elements are created through the factory functions of `diagram-js/lib/model` only; use the helpers in `diagram-js/lib/util/ModelUtil` (for example `isLabel`) instead of `instanceof` checks.
+* The selection outline is 5px instead of 6px away from the element.
 
 ## 0.21.0
 
