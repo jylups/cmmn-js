@@ -732,13 +732,15 @@ describe('features/modeling - #PlanningTableUpdater - discretionary connection',
 
       newTarget = elementRegistry.get('DIS_Task_3');
 
-      var newWaypoints = [{
+      var newWaypoints = [ connection.waypoints[1], {
         x: newTarget.x + 50,
         y: newTarget.y + 40
-      }, connection.waypoints[1]];
+      } ];
 
       // when
-      modeling.reconnectStart(connection, newTarget, newWaypoints);
+      // diagram-js 6 swaps source and target while moving a connection
+      // end; modeling gets the connection in its final direction
+      modeling.reconnect(connection, oldTarget, newTarget, newWaypoints);
 
       newTarget = connection.target;
 

@@ -7,6 +7,16 @@ All notable changes to [@jylups/cmmn-js](https://github.com/jylups/cmmn-js) are 
 ___Note:__ Yet to be released changes appear here._
 
 * `CHORE`: publish prerelease versions under the `next` dist-tag
+* `DEPS`: update to `diagram-js@6.8.2`
+* `FEAT`: keep criteria attached to a stage or case plan model in place when it is resized, if possible
+
+### Breaking Changes
+
+Connecting and reconnecting follow [diagram-js 6](https://github.com/bpmn-io/diagram-js/blob/develop/CHANGELOG.md#600):
+
+* The commands and rules `connection.reconnectStart` and `connection.reconnectEnd` are replaced by `connection.reconnect`. Use `Modeling#reconnect` to change source and target together.
+* Swapping source and target while connecting or moving a connection end is decided by diagram-js, not by the `connection.create` and `connection.reconnect` rules; their results no longer carry a `reverse` flag.
+* `Create#start` takes a context as its third argument: `{ source: element }`.
 
 ## 0.21.0
 
