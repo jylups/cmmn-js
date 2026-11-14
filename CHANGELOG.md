@@ -7,7 +7,7 @@ All notable changes to [@jylups/cmmn-js](https://github.com/jylups/cmmn-js) are 
 ___Note:__ Yet to be released changes appear here._
 
 * `CHORE`: publish prerelease versions under the `next` dist-tag
-* `DEPS`: update to `diagram-js@6.8.2`
+* `DEPS`: update to `diagram-js@8.9.0`
 * `FEAT`: keep criteria attached to a stage or case plan model in place when it is resized, if possible
 
 ### Breaking Changes
@@ -17,6 +17,11 @@ Connecting and reconnecting follow [diagram-js 6](https://github.com/bpmn-io/dia
 * The commands and rules `connection.reconnectStart` and `connection.reconnectEnd` are replaced by `connection.reconnect`. Use `Modeling#reconnect` to change source and target together.
 * Swapping source and target while connecting or moving a connection end is decided by diagram-js, not by the `connection.create` and `connection.reconnect` rules; their results no longer carry a `reverse` flag.
 * `Create#start` takes a context as its third argument: `{ source: element }`.
+
+diagram-js [7](https://github.com/bpmn-io/diagram-js/blob/develop/CHANGELOG.md#700) and [8](https://github.com/bpmn-io/diagram-js/blob/develop/CHANGELOG.md#800) bring further changes for extensions:
+
+* `element.mousedown`, `element.mouseup`, `element.click` and `element.dblclick` also fire for the auxiliary (middle) mouse button. Listeners that should only react to the primary button must check it, for example with `isPrimaryButton` from `diagram-js/lib/util/Mouse`.
+* The canvas supports several root elements. `Canvas#setRootElement` adds and shows a root instead of replacing the current one; to replace it, set the new root and remove the old one with `Canvas#removeRootElement`.
 
 ## 0.21.0
 
