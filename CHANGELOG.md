@@ -7,7 +7,8 @@ All notable changes to [@jylups/cmmn-js](https://github.com/jylups/cmmn-js) are 
 ___Note:__ Yet to be released changes appear here._
 
 * `CHORE`: publish prerelease versions under the `next` dist-tag
-* `DEPS`: update to `diagram-js@12.8.1`, `diagram-js-direct-editing@2.1.2`, `min-dash@4`, `min-dom@4` and `tiny-svg@3`
+* `DEPS`: update to `diagram-js@15.29.0`, `diagram-js-direct-editing@3.6.0`, `min-dash@5`, `min-dom@5`, `tiny-svg@4` and `object-refs@0.4`
+* `FEAT`: show the selection outline in the viewer and the navigated viewer too
 * `CHORE`: provide replace menu entries through the `getPopupMenuEntries` and `getPopupMenuHeaderEntries` methods of the popup menu provider interface
 * `FEAT`: keep criteria attached to a stage or case plan model in place when it is resized, if possible
 * `FIX`: show the day of the month in the build date of the distribution banner
@@ -33,6 +34,14 @@ diagram-js [9](https://github.com/bpmn-io/diagram-js/blob/develop/CHANGELOG.md#9
 * The markup and CSS classes of the popup menu changed, and `.djs-parent` replaces `.djs-container` as the root selector of the canvas and the popup menu.
 * Model elements are created through the factory functions of `diagram-js/lib/model` only; use the helpers in `diagram-js/lib/util/ModelUtil` (for example `isLabel`) instead of `instanceof` checks.
 * The selection outline is 5px instead of 6px away from the element.
+
+diagram-js [13](https://github.com/bpmn-io/diagram-js/blob/develop/CHANGELOG.md#1300) to [15](https://github.com/bpmn-io/diagram-js/blob/develop/CHANGELOG.md#1500):
+
+* The keyboard binds to the canvas, which is focusable now, and shortcuts work while it has focus. `keyboard.bindTo` is no longer supported; set `keyboard.bind` to `false` to turn the shortcuts off. Components that take the focus from the canvas must give it back with `Canvas#restoreFocus`.
+* The `Outline` subclass in `lib/features/outline` is replaced by an outline provider (`cmmnOutlineProvider`) for the diagram-js `outline` module, which also draws the outline around multiple selected elements. Outlines are created when an element is hovered or selected. The viewers include the module now, because the diagram-js `selection` module no longer brings it.
+* `SHIFT + click` adds an element to the selection; `CTRL + click` no longer does. The touch interaction module is removed.
+* diagram-js-direct-editing 3 shows no background while editing the label of an element with a fixed size.
+* min-dom 5 and tiny-svg 4 are ES modules only, and object-refs exports `Refs` by name.
 
 ## 0.21.0
 
