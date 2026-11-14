@@ -9,6 +9,8 @@ ___Note:__ Yet to be released changes appear here._
 * `CHORE`: publish prerelease versions under the `next` dist-tag
 * `DEPS`: update to `diagram-js@8.9.0`
 * `FEAT`: keep criteria attached to a stage or case plan model in place when it is resized, if possible
+* `FIX`: show the day of the month in the build date of the distribution banner
+* `CHORE`: build the distribution with Rollup and Babel 7, and bundle the tests with webpack 5, instead of browserify and Babel 6
 
 ### Breaking Changes
 
