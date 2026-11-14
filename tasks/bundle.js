@@ -1,15 +1,15 @@
 'use strict';
 
-var browserify = require('browserify'),
-    derequire = require('browserify-derequire'),
-    collapse = require('bundle-collapser/plugin'),
-    fs = require('fs'),
-    path = require('path'),
-    flattenBundle = require('browser-pack-flat/plugin'),
-    commonShake = require('common-shakeify'),
-    unassertify = require('unassertify'),
-    uglify = require('uglify-es'),
-    envify = require('envify');
+var fs = require('fs'),
+    path = require('path');
+
+var rollup = require('rollup'),
+    babel = require('@rollup/plugin-babel').babel,
+    commonjs = require('@rollup/plugin-commonjs'),
+    json = require('@rollup/plugin-json'),
+    nodeResolve = require('@rollup/plugin-node-resolve').nodeResolve,
+    replace = require('@rollup/plugin-replace'),
+    terser = require('@rollup/plugin-terser');
 
 var pkg = require('../package');
 
@@ -86,8 +86,69 @@ function today() {
   return [
     d.getFullYear(),
     pad(d.getMonth() + 1),
-    pad(d.getDay())
+    pad(d.getDate())
   ].join('-');
+}
+
+/**
+ * Rollup plugins for one bundle.
+ *
+ * lib/ is written as CommonJS and requires the ES modules of diagram-js and
+ * other dependencies; @rollup/plugin-commonjs converts it. Babel then
+ * transpiles the whole bundle, dependencies included, with the default
+ * targets of @babel/preset-env, so the bundles stay ES5.
+ *
+ * @param {string} nodeEnv
+ *
+ * @return {Array<Object>}
+ */
+function plugins(nodeEnv) {
+  return [
+    replace({
+      preventAssignment: true,
+      values: {
+        'process.env.NODE_ENV': JSON.stringify(nodeEnv)
+      }
+    }),
+    nodeResolve({
+      browser: true
+    }),
+    commonjs(),
+    json(),
+    babel({
+      babelrc: false,
+      configFile: false,
+      babelHelpers: 'bundled',
+      sourceType: 'unambiguous',
+      extensions: [ '.js', '.mjs', '.cjs' ],
+      presets: [
+        [ '@babel/preset-env', { modules: false } ]
+      ]
+    })
+  ];
+}
+
+function onwarn(warning, warn) {
+
+  // diagram-js and its dependencies use `this` at the top level of
+  // ES modules in a few places; Rollup rewrites it to `undefined`
+  if (warning.code === 'THIS_IS_UNDEFINED') {
+    return;
+  }
+
+  warn(warning);
+}
+
+function build(src, nodeEnv, output) {
+  return rollup.rollup({
+    input: src,
+    plugins: plugins(nodeEnv),
+    onwarn: onwarn
+  }).then(function(result) {
+    return result.write(output).then(function() {
+      return result.close();
+    });
+  });
 }
 
 function bundle(dest, variant, entry, done) {
@@ -100,19 +161,6 @@ function bundle(dest, variant, entry, done) {
     date: today()
   };
 
-  var browserifyOptions = {
-    standalone: 'CmmnJS',
-    builtins: false,
-    insertGlobalVars: {
-      process: function() {
-        return 'undefined';
-      },
-      Buffer: function() {
-        return 'undefined';
-      }
-    }
-  };
-
   var targetFileBase = path.join(dest, variant);
 
   var banner = processTemplate(BANNER, config),
@@ -120,89 +168,46 @@ function bundle(dest, variant, entry, done) {
 
   var timer = new Timer();
 
+  function write(nodeEnv, output) {
+    return function(done) {
+      timer.start('build ' + nodeEnv);
+
+      build(src, nodeEnv, output).then(function() {
+        timer.done('wrote ' + output.file);
+
+        done();
+      }, done);
+    };
+  }
+
   var fns = [
 
     // production
-    function(done) {
-
-      timer.start('build prod');
-
-      browserify(browserifyOptions)
-        .transform('babelify', {
-          babelrc: false,
-          global: true,
-          presets: [ 'env' ]
-        })
-        .transform(envify, {
-          NODE_ENV: 'production'
-        })
-        .transform(unassertify)
-        .plugin(commonShake)
-        .plugin(flattenBundle)
-        .plugin(collapse)
-        .plugin(derequire)
-        .add(src)
-        .bundle(function(err, result) {
-
-          timer.done('bundled');
-
-          if (err) {
-            return done(err);
+    write('production', {
+      file: targetFileBase + '.production.min.js',
+      format: 'umd',
+      name: 'CmmnJS',
+      exports: 'default',
+      plugins: [
+        terser({
+          compress: true,
+          mangle: true,
+          format: {
+            comments: false,
+            preamble: bannerMin
           }
-
-          var str = result.toString('utf-8');
-
-          var minified = uglify.minify(str, {
-            compress: true,
-            mangle: true,
-            output: {
-              preamble: bannerMin
-            }
-          });
-
-          timer.done('minified');
-
-          fs.writeFileSync(targetFileBase + '.production.min.js', minified.code, 'utf8');
-
-          timer.done('wrote ' + targetFileBase + '.production.min.js');
-
-          done();
-        });
-    },
+        })
+      ]
+    }),
 
     // development
-    function(done) {
-      timer.start('build dev');
-
-      browserify(browserifyOptions)
-        .transform('babelify', {
-          babelrc: false,
-          global: true,
-          presets: [ 'env' ]
-        })
-        .transform(envify, {
-          NODE_ENV: 'development'
-        })
-        .plugin(collapse)
-        .plugin(derequire)
-        .add(src)
-        .bundle(function(err, result) {
-
-          timer.done('bundled');
-
-          if (err) {
-            return done(err);
-          }
-
-          var code = banner + result.toString('utf-8');
-
-          fs.writeFileSync(targetFileBase + '.development.js', code, 'utf8');
-
-          timer.done('wrote ' + targetFileBase + '.development.js');
-
-          done();
-        });
-    }
+    write('development', {
+      file: targetFileBase + '.development.js',
+      format: 'umd',
+      name: 'CmmnJS',
+      exports: 'default',
+      banner: banner.replace(/\s+$/, '')
+    })
   ];
 
   asyncSeries(fns, done);
