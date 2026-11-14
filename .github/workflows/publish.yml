@@ -2,6 +2,8 @@ name: Publish to npm
 
 # Publishes @jylups/cmmn-js when a GitHub release is published.
 # The release tag must match the package.json version (v0.21.0 for 0.21.0).
+# A prerelease version such as 0.22.0-next.0 is published under the npm
+# dist-tag "next", so "latest" keeps pointing to the last stable version.
 #
 # npm authenticates this workflow with trusted publishing (OIDC), so no npm
 # token is stored in the repository. The package's trusted publisher on
@@ -51,4 +53,9 @@ jobs:
     # prepublishOnly builds dist/ again and tests it before the upload;
     # trusted publishing needs npm 11.5.1 or later, Node 26 includes it
     - name: Publish
-      run: npm publish
+      run: |
+        VERSION="$(node -p "require('./package.json').version")"
+        case "$VERSION" in
+          *-*) npm publish --tag next ;;
+          *) npm publish ;;
+        esac

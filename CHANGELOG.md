@@ -6,6 +6,8 @@ All notable changes to [@jylups/cmmn-js](https://github.com/jylups/cmmn-js) are 
 
 ___Note:__ Yet to be released changes appear here._
 
+* `CHORE`: publish prerelease versions under the `next` dist-tag
+
 ## 0.21.0
 
 * `FIX`: keep importing a diagram when one of its connections cannot be drawn; the error is reported as an import warning
