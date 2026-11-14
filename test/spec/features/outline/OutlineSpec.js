@@ -33,8 +33,9 @@ describe('features - outline', function() {
 
     var outlineBBox = domQuery('.djs-outline', gfx).getBBox();
 
-    expect(outlineBBox.y).to.equal(-24);
-    expect(outlineBBox.height).to.equal(280);
+    // the outline includes the case plan model's 18px high tab
+    expect(outlineBBox.y).to.equal(-outline.offset - 18);
+    expect(outlineBBox.height).to.equal(casePlanModel.height + 18 + outline.offset * 2);
   }));
 
 });
