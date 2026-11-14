@@ -20,7 +20,7 @@ describe('features - outline', function() {
   beforeEach(bootstrapModeler(diagramXML, { modules: testModules }));
 
 
-  it('should fit case plan model height', inject(function(outline, elementRegistry, selection) {
+  it('should fit case plan model height', inject(function(elementRegistry, selection) {
 
     // given
     var casePlanModel = elementRegistry.get('CasePlanModel_1');
@@ -33,9 +33,29 @@ describe('features - outline', function() {
 
     var outlineBBox = domQuery('.djs-outline', gfx).getBBox();
 
-    // the outline includes the case plan model's 18px high tab
-    expect(outlineBBox.y).to.equal(-outline.offset - 18);
-    expect(outlineBBox.height).to.equal(casePlanModel.height + 18 + outline.offset * 2);
+    // 5px around the case plan model, including its 18px high tab
+    expect(outlineBBox.y).to.equal(-5 - 18);
+    expect(outlineBBox.height).to.equal(casePlanModel.height + 18 + 5 * 2);
+  }));
+
+
+  it('should use the default outline for other elements', inject(function(elementRegistry, selection) {
+
+    // given
+    var planItem = elementRegistry.filter(function(element) {
+      return element.type === 'cmmn:PlanItem';
+    })[0];
+
+    // when
+    selection.select(planItem);
+
+    // then
+    var gfx = elementRegistry.getGraphics(planItem);
+
+    var outlineBBox = domQuery('.djs-outline', gfx).getBBox();
+
+    expect(outlineBBox.y).to.equal(-5);
+    expect(outlineBBox.height).to.equal(planItem.height + 5 * 2);
   }));
 
 });

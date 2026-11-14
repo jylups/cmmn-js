@@ -148,10 +148,13 @@ describe('label bounds', function() {
     describe('label outlines', function() {
 
       it('should update after element bounds have been updated',
-        inject(function(outline, elementRegistry, cmmnRenderer) {
+        inject(function(outline, elementRegistry, cmmnRenderer, selection) {
 
           // given
           var shape = elementRegistry.get('PlanItem_1');
+
+          // outlines are created when an element is selected or hovered
+          selection.select(shape.label);
 
           var outlineSpy = sinon.spy(outline, 'updateShapeOutline');
           var rendererSpy = sinon.spy(cmmnRenderer, 'drawShape');

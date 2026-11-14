@@ -51,6 +51,22 @@ The [playground](https://github.com/jylups/cmmn-js-env#playground) in the
 development environment opens sample diagrams in the viewer and the modeler.
 
 
+### Keyboard
+
+The modeler's keyboard shortcuts, such as undo, select all or the lasso tool, work while the diagram has the focus; clicking into the diagram gives it the focus. To turn the shortcuts off, set `keyboard.bind` to `false`:
+
+```javascript
+var modeler = new CmmnJS({
+  container: '#canvas',
+  keyboard: {
+    bind: false
+  }
+});
+```
+
+The `keyboard.bindTo` option of earlier versions is no longer supported.
+
+
 ### Dynamic Attach/Detach
 
 You may attach or detach the viewer dynamically to any element on the page, too:
