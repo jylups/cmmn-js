@@ -8,4 +8,3 @@ test/*
 !test/helper
 .eslintignore
 .eslintrc
-.travis.yml

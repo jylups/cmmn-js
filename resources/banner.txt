@@ -6,7 +6,7 @@
  * Released under the bpmn.io license
  * http://bpmn.io/license
  *
- * Source Code: https://github.com/bpmn-io/cmmn-js
+ * Source Code: https://github.com/jylups/cmmn-js
  *
  * Date: {{ date }}
  */

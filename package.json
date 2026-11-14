@@ -1,6 +1,6 @@
 {
-  "name": "cmmn-js",
-  "version": "0.20.0",
+  "name": "@jylups/cmmn-js",
+  "version": "0.21.0",
   "description": "A cmmn 1.1 toolkit",
   "scripts": {
     "all": "run-s lint test distro test:distro",
@@ -13,7 +13,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bpmn-io/cmmn-js"
+    "url": "git+https://github.com/jylups/cmmn-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jylups/cmmn-js-env/issues"
   },
   "keywords": [
     "cmmn",
@@ -69,8 +72,8 @@
     "watchify": "^3.11.1"
   },
   "dependencies": {
+    "@jylups/cmmn-moddle": "^5.1.0",
     "cmmn-font": "^0.5.0",
-    "cmmn-moddle": "^5.0.0",
     "css.escape": "^1.5.1",
     "diagram-js": "^4.0.1",
     "diagram-js-direct-editing": "^1.5.0",
@@ -80,5 +83,8 @@
     "min-dom": "^3.0.0",
     "object-refs": "^0.3.0",
     "tiny-svg": "^2.2.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

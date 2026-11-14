@@ -1,19 +1,34 @@
-# cmmn-js - CMMN 1.1 for the web
+# @jylups/cmmn-js - CMMN 1.1 for the web
 
-[![Build Status](https://travis-ci.org/bpmn-io/cmmn-js.svg?branch=develop)](https://travis-ci.org/bpmn-io/cmmn-js)
+[![CI](https://github.com/jylups/cmmn-js/actions/workflows/ci.yml/badge.svg)](https://github.com/jylups/cmmn-js/actions/workflows/ci.yml)
+
+> Maintained fork of [bpmn-io/cmmn-js](https://github.com/bpmn-io/cmmn-js), which is no longer developed, for the [Flowable CMMN editor](https://github.com/jylups/cmmn-js-env). It is published as `@jylups/cmmn-js` from version `0.21.0`.
 
 View and edit CMMN 1.1 diagrams in the browser.
 
 
 ## Installation
 
-Use the library [pre-packaged](https://github.com/bpmn-io/cmmn-js-examples/tree/master/pre-packaged)
-or include it [via npm](https://github.com/bpmn-io/cmmn-js-examples/tree/master/bundling)
-into your node-style web-application.
+Get the library via the [npm package](https://www.npmjs.com/package/@jylups/cmmn-js):
+
+```bash
+npm install @jylups/cmmn-js
+```
+
+Bundle it into your web application, or use one of the pre-packaged
+distributions in `dist/` (`cmmn-viewer`, `cmmn-navigated-viewer` and
+`cmmn-modeler`), which expose a global `CmmnJS`.
+
+```javascript
+var CmmnJS = require('@jylups/cmmn-js/lib/Modeler');
+```
+
+The [cmmn-js examples](https://github.com/bpmn-io/cmmn-js-examples) of the
+original project show more ways to use it.
 
 ## Usage
 
-To get started, create a [cmmn-js](https://github.com/bpmn-io/cmmn-js) instance
+To get started, create a cmmn-js instance
 and render [CMMN 1.1 diagrams](http://www.omg.org/spec/CMMN/1.1/) in the browser:
 
 ```javascript
@@ -32,8 +47,8 @@ viewer.importXML(xml, function(err) {
 });
 ```
 
-Checkout our [examples](https://github.com/bpmn-io/cmmn-js-examples) for many
-more supported usage scenarios.
+The [playground](https://github.com/jylups/cmmn-js-env#playground) in the
+development environment opens sample diagrams in the viewer and the modeler.
 
 
 ### Dynamic Attach/Detach
@@ -53,24 +68,28 @@ viewer.detach();
 
 ## Resources
 
-*   [Demo](http://demo.bpmn.io/cmmn)
-*   [Issues](https://github.com/bpmn-io/cmmn-js/issues)
-*   [Examples](https://github.com/bpmn-io/cmmn-js-examples)
-*   [Forum](https://forum.bpmn.io)
+*   [Issues](https://github.com/jylups/cmmn-js-env/issues)
+*   [Development environment](https://github.com/jylups/cmmn-js-env)
+*   [Examples of the original project](https://github.com/bpmn-io/cmmn-js-examples)
 
 
 ## Building the Project
 
 Perform the following steps to build the library, including running all tests:
 
-```
+```bash
 cd cmmn-js
 npm install
 npm run all
 ```
 
-You may need to perform [additional project setup](./docs/project/SETUP.md) when
-building the latest development snapshot.
+The tests run in a headless Google Chrome. Set `CHROME_BIN` if Chrome is not
+found, or `TEST_BROWSERS` to use other browsers (for example `Chrome,Firefox`).
+
+To work on cmmn-js together with `@jylups/cmmn-moddle`, the Flowable extensions
+and the properties panel, use the
+[development environment](https://github.com/jylups/cmmn-js-env), which links
+them as npm workspaces.
 
 Please checkout our [contributing guidelines](./.github/CONTRIBUTING.md) if you plan to
 file an issue or pull request.
@@ -80,7 +99,7 @@ file an issue or pull request.
 
 cmmn-js builds on top of a few additional powerful tools:
 
-* [cmmn-moddle](https://github.com/bpmn-io/cmmn-moddle): Read / write support for CMMN 1.1 XML in the browsers
+* [@jylups/cmmn-moddle](https://github.com/jylups/cmmn-moddle): Read / write support for CMMN 1.1 XML in the browsers
 * [diagram-js](https://github.com/bpmn-io/diagram-js): Diagram rendering and editing toolkit
 
 

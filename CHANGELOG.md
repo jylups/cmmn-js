@@ -1,10 +1,18 @@
 # Changelog
 
-All notable changes to [cmmn-js](https://github.com/bpmn-io/cmmn-js) are documented here. We use [semantic versioning](http://semver.org/) for releases.
+All notable changes to [@jylups/cmmn-js](https://github.com/jylups/cmmn-js) are documented here. We use [semantic versioning](http://semver.org/) for releases. Versions up to `0.20.0` were published as [cmmn-js](https://github.com/bpmn-io/cmmn-js) by bpmn.io.
 
 ## Unreleased
 
 ___Note:__ Yet to be released changes appear here._
+
+## 0.21.0
+
+* `FIX`: keep importing a diagram when one of its connections cannot be drawn; the error is reported as an import warning
+* `CHORE`: publish as `@jylups/cmmn-js`, a maintained fork of `cmmn-js`
+* `CHORE`: depend on `@jylups/cmmn-moddle`
+* `CHORE`: run the tests in the installed Google Chrome instead of PhantomJS and puppeteer
+* `CHORE`: build on GitHub Actions and publish to npm from GitHub releases
 
 ## 0.20.0
 
