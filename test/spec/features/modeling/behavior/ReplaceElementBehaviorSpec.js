@@ -1454,9 +1454,9 @@ describe('features/modeling/behavior - replace element', function() {
           target = elementRegistry.get('DIS_Task_3');
 
           // when
-          connection = modeling.connect(source, target, {
+          // diagram-js connects in reverse order by swapping source and target
+          connection = modeling.connect(target, source, {
             type: 'cmmn:PlanItemOnPart',
-            reverse: true,
             replacements: [{
               oldElementId: target.id,
               newElementType: 'cmmn:PlanItem'
@@ -1577,9 +1577,9 @@ describe('features/modeling/behavior - replace element', function() {
           target = elementRegistry.get('EntryCriterion_3');
 
           // when
-          connection = modeling.connect(source, target, {
+          // diagram-js connects in reverse order by swapping source and target
+          connection = modeling.connect(target, source, {
             type: 'cmmn:PlanItemOnPart',
-            reverse: true,
             replacements: [{
               oldElementId: target.id,
               newElementType: 'cmmn:ExitCriterion'

@@ -99,17 +99,17 @@ describe('features - resize', function() {
 
           it('should execute', function() {
             // then
-            expect(exitN.x).to.equal(455);
+            expect(exitN.x).to.equal(465);
             expect(exitN.y).to.equal(11);
 
             expect(exitE.x).to.equal(895);
-            expect(exitE.y).to.equal(381);
+            expect(exitE.y).to.equal(391);
 
-            expect(exitS.x).to.equal(455);
+            expect(exitS.x).to.equal(465);
             expect(exitS.y).to.equal(751);
 
             expect(exitW.x).to.equal(15);
-            expect(exitW.y).to.equal(381);
+            expect(exitW.y).to.equal(391);
           });
 
 
@@ -138,17 +138,17 @@ describe('features - resize', function() {
             commandStack.redo();
 
             // then
-            expect(exitN.x).to.equal(455);
+            expect(exitN.x).to.equal(465);
             expect(exitN.y).to.equal(11);
 
             expect(exitE.x).to.equal(895);
-            expect(exitE.y).to.equal(381);
+            expect(exitE.y).to.equal(391);
 
-            expect(exitS.x).to.equal(455);
+            expect(exitS.x).to.equal(465);
             expect(exitS.y).to.equal(751);
 
             expect(exitW.x).to.equal(15);
-            expect(exitW.y).to.equal(381);
+            expect(exitW.y).to.equal(391);
           }));
 
         });
@@ -169,16 +169,16 @@ describe('features - resize', function() {
           it('should execute', function() {
             // then
             expectSourceWaypoint(onPart5.waypoints, { x: 475, y: 125 });
-            expectTargetWaypoint(onPart5.waypoints, { x: 465, y: 39 });
+            expectTargetWaypoint(onPart5.waypoints, { x: 475, y: 39 });
 
             expectSourceWaypoint(onPart6.waypoints, { x: 825, y: 405 });
-            expectTargetWaypoint(onPart6.waypoints, { x: 895, y: 395 });
+            expectTargetWaypoint(onPart6.waypoints, { x: 895, y: 405 });
 
             expectSourceWaypoint(onPart7.waypoints, { x: 475, y: 685 });
-            expectTargetWaypoint(onPart7.waypoints, { x: 465, y: 751 });
+            expectTargetWaypoint(onPart7.waypoints, { x: 475, y: 751 });
 
             expectSourceWaypoint(onPart8.waypoints, { x: 125, y: 405 });
-            expectTargetWaypoint(onPart8.waypoints, { x: 35, y: 395 });
+            expectTargetWaypoint(onPart8.waypoints, { x: 35, y: 405 });
           });
 
 
@@ -208,16 +208,16 @@ describe('features - resize', function() {
 
             // then
             expectSourceWaypoint(onPart5.waypoints, { x: 475, y: 125 });
-            expectTargetWaypoint(onPart5.waypoints, { x: 465, y: 39 });
+            expectTargetWaypoint(onPart5.waypoints, { x: 475, y: 39 });
 
             expectSourceWaypoint(onPart6.waypoints, { x: 825, y: 405 });
-            expectTargetWaypoint(onPart6.waypoints, { x: 895, y: 395 });
+            expectTargetWaypoint(onPart6.waypoints, { x: 895, y: 405 });
 
             expectSourceWaypoint(onPart7.waypoints, { x: 475, y: 685 });
-            expectTargetWaypoint(onPart7.waypoints, { x: 465, y: 751 });
+            expectTargetWaypoint(onPart7.waypoints, { x: 475, y: 751 });
 
             expectSourceWaypoint(onPart8.waypoints, { x: 125, y: 405 });
-            expectTargetWaypoint(onPart8.waypoints, { x: 35, y: 395 });
+            expectTargetWaypoint(onPart8.waypoints, { x: 35, y: 405 });
           }));
 
         });
@@ -274,17 +274,17 @@ describe('features - resize', function() {
 
           it('should execute', function() {
             // then
-            expect(exitN.x).to.equal(475);
+            expect(exitN.x).to.equal(465);
             expect(exitN.y).to.equal(11);
 
             expect(exitE.x).to.equal(935);
-            expect(exitE.y).to.equal(401);
+            expect(exitE.y).to.equal(391);
 
-            expect(exitS.x).to.equal(475);
+            expect(exitS.x).to.equal(465);
             expect(exitS.y).to.equal(791);
 
             expect(exitW.x).to.equal(15);
-            expect(exitW.y).to.equal(401);
+            expect(exitW.y).to.equal(391);
           });
 
 
@@ -313,17 +313,17 @@ describe('features - resize', function() {
             commandStack.redo();
 
             // then
-            expect(exitN.x).to.equal(475);
+            expect(exitN.x).to.equal(465);
             expect(exitN.y).to.equal(11);
 
             expect(exitE.x).to.equal(935);
-            expect(exitE.y).to.equal(401);
+            expect(exitE.y).to.equal(391);
 
-            expect(exitS.x).to.equal(475);
+            expect(exitS.x).to.equal(465);
             expect(exitS.y).to.equal(791);
 
             expect(exitW.x).to.equal(15);
-            expect(exitW.y).to.equal(401);
+            expect(exitW.y).to.equal(391);
           }));
 
         });
@@ -343,16 +343,16 @@ describe('features - resize', function() {
           it('should execute', function() {
             // then
             expectSourceWaypoint(onPart5.waypoints, { x: 475, y: 125 });
-            expectTargetWaypoint(onPart5.waypoints, { x: 485, y: 39 });
+            expectTargetWaypoint(onPart5.waypoints, { x: 475, y: 39 });
 
             expectSourceWaypoint(onPart6.waypoints, { x: 825, y: 405 });
-            expectTargetWaypoint(onPart6.waypoints, { x: 935, y: 415 });
+            expectTargetWaypoint(onPart6.waypoints, { x: 935, y: 405 });
 
             expectSourceWaypoint(onPart7.waypoints, { x: 475, y: 685 });
-            expectTargetWaypoint(onPart7.waypoints, { x: 485, y: 791 });
+            expectTargetWaypoint(onPart7.waypoints, { x: 475, y: 791 });
 
             expectSourceWaypoint(onPart8.waypoints, { x: 125, y: 405 });
-            expectTargetWaypoint(onPart8.waypoints, { x: 35, y: 415 });
+            expectTargetWaypoint(onPart8.waypoints, { x: 35, y: 405 });
           });
 
 
@@ -382,16 +382,16 @@ describe('features - resize', function() {
 
             // then
             expectSourceWaypoint(onPart5.waypoints, { x: 475, y: 125 });
-            expectTargetWaypoint(onPart5.waypoints, { x: 485, y: 39 });
+            expectTargetWaypoint(onPart5.waypoints, { x: 475, y: 39 });
 
             expectSourceWaypoint(onPart6.waypoints, { x: 825, y: 405 });
-            expectTargetWaypoint(onPart6.waypoints, { x: 935, y: 415 });
+            expectTargetWaypoint(onPart6.waypoints, { x: 935, y: 405 });
 
             expectSourceWaypoint(onPart7.waypoints, { x: 475, y: 685 });
-            expectTargetWaypoint(onPart7.waypoints, { x: 485, y: 791 });
+            expectTargetWaypoint(onPart7.waypoints, { x: 475, y: 791 });
 
             expectSourceWaypoint(onPart8.waypoints, { x: 125, y: 405 });
-            expectTargetWaypoint(onPart8.waypoints, { x: 35, y: 415 });
+            expectTargetWaypoint(onPart8.waypoints, { x: 35, y: 405 });
           }));
 
         });
@@ -465,17 +465,17 @@ describe('features - resize', function() {
 
           it('should execute', function() {
             // then
-            expect(exitN.x).to.equal(475);
+            expect(exitN.x).to.equal(465);
             expect(exitN.y).to.equal(31);
 
             expect(exitE.x).to.equal(915);
-            expect(exitE.y).to.equal(401);
+            expect(exitE.y).to.equal(391);
 
-            expect(exitS.x).to.equal(475);
+            expect(exitS.x).to.equal(465);
             expect(exitS.y).to.equal(771);
 
             expect(exitW.x).to.equal(35);
-            expect(exitW.y).to.equal(401);
+            expect(exitW.y).to.equal(391);
           });
 
 
@@ -504,17 +504,17 @@ describe('features - resize', function() {
             commandStack.redo();
 
             // then
-            expect(exitN.x).to.equal(475);
+            expect(exitN.x).to.equal(465);
             expect(exitN.y).to.equal(31);
 
             expect(exitE.x).to.equal(915);
-            expect(exitE.y).to.equal(401);
+            expect(exitE.y).to.equal(391);
 
-            expect(exitS.x).to.equal(475);
+            expect(exitS.x).to.equal(465);
             expect(exitS.y).to.equal(771);
 
             expect(exitW.x).to.equal(35);
-            expect(exitW.y).to.equal(401);
+            expect(exitW.y).to.equal(391);
           }));
 
         });
@@ -534,16 +534,16 @@ describe('features - resize', function() {
           it('should execute', function() {
             // then
             expectSourceWaypoint(onPart5.waypoints, { x: 475, y: 125 });
-            expectTargetWaypoint(onPart5.waypoints, { x: 485, y: 59 });
+            expectTargetWaypoint(onPart5.waypoints, { x: 475, y: 59 });
 
             expectSourceWaypoint(onPart6.waypoints, { x: 825, y: 405 });
-            expectTargetWaypoint(onPart6.waypoints, { x: 915, y: 415 });
+            expectTargetWaypoint(onPart6.waypoints, { x: 915, y: 405 });
 
             expectSourceWaypoint(onPart7.waypoints, { x: 475, y: 685 });
-            expectTargetWaypoint(onPart7.waypoints, { x: 485, y: 771 });
+            expectTargetWaypoint(onPart7.waypoints, { x: 475, y: 771 });
 
             expectSourceWaypoint(onPart8.waypoints, { x: 125, y: 405 });
-            expectTargetWaypoint(onPart8.waypoints, { x: 55, y: 415 });
+            expectTargetWaypoint(onPart8.waypoints, { x: 55, y: 405 });
           });
 
 
@@ -573,16 +573,16 @@ describe('features - resize', function() {
 
             // then
             expectSourceWaypoint(onPart5.waypoints, { x: 475, y: 125 });
-            expectTargetWaypoint(onPart5.waypoints, { x: 485, y: 59 });
+            expectTargetWaypoint(onPart5.waypoints, { x: 475, y: 59 });
 
             expectSourceWaypoint(onPart6.waypoints, { x: 825, y: 405 });
-            expectTargetWaypoint(onPart6.waypoints, { x: 915, y: 415 });
+            expectTargetWaypoint(onPart6.waypoints, { x: 915, y: 405 });
 
             expectSourceWaypoint(onPart7.waypoints, { x: 475, y: 685 });
-            expectTargetWaypoint(onPart7.waypoints, { x: 485, y: 771 });
+            expectTargetWaypoint(onPart7.waypoints, { x: 475, y: 771 });
 
             expectSourceWaypoint(onPart8.waypoints, { x: 125, y: 405 });
-            expectTargetWaypoint(onPart8.waypoints, { x: 55, y: 415 });
+            expectTargetWaypoint(onPart8.waypoints, { x: 55, y: 405 });
           }));
 
         });
@@ -648,17 +648,17 @@ describe('features - resize', function() {
 
           it('should execute', function() {
             // then
-            expect(exitN.x).to.equal(455);
+            expect(exitN.x).to.equal(465);
             expect(exitN.y).to.equal(-9);
 
             expect(exitE.x).to.equal(915);
-            expect(exitE.y).to.equal(381);
+            expect(exitE.y).to.equal(391);
 
-            expect(exitS.x).to.equal(455);
+            expect(exitS.x).to.equal(465);
             expect(exitS.y).to.equal(771);
 
             expect(exitW.x).to.equal(-5);
-            expect(exitW.y).to.equal(381);
+            expect(exitW.y).to.equal(391);
           });
 
 
@@ -687,17 +687,17 @@ describe('features - resize', function() {
             commandStack.redo();
 
             // then
-            expect(exitN.x).to.equal(455);
+            expect(exitN.x).to.equal(465);
             expect(exitN.y).to.equal(-9);
 
             expect(exitE.x).to.equal(915);
-            expect(exitE.y).to.equal(381);
+            expect(exitE.y).to.equal(391);
 
-            expect(exitS.x).to.equal(455);
+            expect(exitS.x).to.equal(465);
             expect(exitS.y).to.equal(771);
 
             expect(exitW.x).to.equal(-5);
-            expect(exitW.y).to.equal(381);
+            expect(exitW.y).to.equal(391);
           }));
 
         });
@@ -717,16 +717,16 @@ describe('features - resize', function() {
           it('should execute', function() {
             // then
             expectSourceWaypoint(onPart5.waypoints, { x: 475, y: 125 });
-            expectTargetWaypoint(onPart5.waypoints, { x: 465, y: 19 });
+            expectTargetWaypoint(onPart5.waypoints, { x: 475, y: 19 });
 
             expectSourceWaypoint(onPart6.waypoints, { x: 825, y: 405 });
-            expectTargetWaypoint(onPart6.waypoints, { x: 915, y: 395 });
+            expectTargetWaypoint(onPart6.waypoints, { x: 915, y: 405 });
 
             expectSourceWaypoint(onPart7.waypoints, { x: 475, y: 685 });
-            expectTargetWaypoint(onPart7.waypoints, { x: 465, y: 771 });
+            expectTargetWaypoint(onPart7.waypoints, { x: 475, y: 771 });
 
             expectSourceWaypoint(onPart8.waypoints, { x: 125, y: 405 });
-            expectTargetWaypoint(onPart8.waypoints, { x: 15, y: 395 });
+            expectTargetWaypoint(onPart8.waypoints, { x: 15, y: 405 });
           });
 
 
@@ -756,16 +756,16 @@ describe('features - resize', function() {
 
             // then
             expectSourceWaypoint(onPart5.waypoints, { x: 475, y: 125 });
-            expectTargetWaypoint(onPart5.waypoints, { x: 465, y: 19 });
+            expectTargetWaypoint(onPart5.waypoints, { x: 475, y: 19 });
 
             expectSourceWaypoint(onPart6.waypoints, { x: 825, y: 405 });
-            expectTargetWaypoint(onPart6.waypoints, { x: 915, y: 395 });
+            expectTargetWaypoint(onPart6.waypoints, { x: 915, y: 405 });
 
             expectSourceWaypoint(onPart7.waypoints, { x: 475, y: 685 });
-            expectTargetWaypoint(onPart7.waypoints, { x: 465, y: 771 });
+            expectTargetWaypoint(onPart7.waypoints, { x: 475, y: 771 });
 
             expectSourceWaypoint(onPart8.waypoints, { x: 125, y: 405 });
-            expectTargetWaypoint(onPart8.waypoints, { x: 15, y: 395 });
+            expectTargetWaypoint(onPart8.waypoints, { x: 15, y: 405 });
           }));
 
         });
@@ -844,17 +844,17 @@ describe('features - resize', function() {
 
           it('should execute', function() {
             // then
-            expect(exitN.x).to.equal(455);
+            expect(exitN.x).to.equal(465);
             expect(exitN.y).to.equal(291);
 
             expect(exitE.x).to.equal(595);
-            expect(exitE.y).to.equal(381);
+            expect(exitE.y).to.equal(391);
 
-            expect(exitS.x).to.equal(488);
+            expect(exitS.x).to.equal(500);
             expect(exitS.y).to.equal(471);
 
             expect(exitW.x).to.equal(315);
-            expect(exitW.y).to.equal(381);
+            expect(exitW.y).to.equal(391);
           });
 
 
@@ -883,17 +883,17 @@ describe('features - resize', function() {
             commandStack.redo();
 
             // then
-            expect(exitN.x).to.equal(455);
+            expect(exitN.x).to.equal(465);
             expect(exitN.y).to.equal(291);
 
             expect(exitE.x).to.equal(595);
-            expect(exitE.y).to.equal(381);
+            expect(exitE.y).to.equal(391);
 
-            expect(exitS.x).to.equal(488);
+            expect(exitS.x).to.equal(500);
             expect(exitS.y).to.equal(471);
 
             expect(exitW.x).to.equal(315);
-            expect(exitW.y).to.equal(381);
+            expect(exitW.y).to.equal(391);
           }));
 
         });
@@ -913,16 +913,16 @@ describe('features - resize', function() {
           it('should execute', function() {
             // then
             expectSourceWaypoint(onPart1.waypoints, { x: 475, y: 205 });
-            expectTargetWaypoint(onPart1.waypoints, { x: 465, y: 291 });
+            expectTargetWaypoint(onPart1.waypoints, { x: 475, y: 291 });
 
             expectSourceWaypoint(onPart2.waypoints, { x: 725, y: 405 });
-            expectTargetWaypoint(onPart2.waypoints, { x: 615, y: 395 });
+            expectTargetWaypoint(onPart2.waypoints, { x: 615, y: 405 });
 
             expectSourceWaypoint(onPart3.waypoints, { x: 475, y: 605 });
-            expectTargetWaypoint(onPart3.waypoints, { x: 498, y: 499 });
+            expectTargetWaypoint(onPart3.waypoints, { x: 510, y: 499 });
 
             expectSourceWaypoint(onPart4.waypoints, { x: 225, y: 405 });
-            expectTargetWaypoint(onPart4.waypoints, { x: 315, y: 395 });
+            expectTargetWaypoint(onPart4.waypoints, { x: 315, y: 405 });
           });
 
 
@@ -952,16 +952,16 @@ describe('features - resize', function() {
 
             // then
             expectSourceWaypoint(onPart1.waypoints, { x: 475, y: 205 });
-            expectTargetWaypoint(onPart1.waypoints, { x: 465, y: 291 });
+            expectTargetWaypoint(onPart1.waypoints, { x: 475, y: 291 });
 
             expectSourceWaypoint(onPart2.waypoints, { x: 725, y: 405 });
-            expectTargetWaypoint(onPart2.waypoints, { x: 615, y: 395 });
+            expectTargetWaypoint(onPart2.waypoints, { x: 615, y: 405 });
 
             expectSourceWaypoint(onPart3.waypoints, { x: 475, y: 605 });
-            expectTargetWaypoint(onPart3.waypoints, { x: 498, y: 499 });
+            expectTargetWaypoint(onPart3.waypoints, { x: 510, y: 499 });
 
             expectSourceWaypoint(onPart4.waypoints, { x: 225, y: 405 });
-            expectTargetWaypoint(onPart4.waypoints, { x: 315, y: 395 });
+            expectTargetWaypoint(onPart4.waypoints, { x: 315, y: 405 });
           }));
 
         });
@@ -1017,17 +1017,17 @@ describe('features - resize', function() {
 
           it('should execute', function() {
             // then
-            expect(exitN.x).to.equal(475);
+            expect(exitN.x).to.equal(465);
             expect(exitN.y).to.equal(291);
 
             expect(exitE.x).to.equal(635);
-            expect(exitE.y).to.equal(401);
+            expect(exitE.y).to.equal(391);
 
-            expect(exitS.x).to.equal(512);
+            expect(exitS.x).to.equal(500);
             expect(exitS.y).to.equal(511);
 
             expect(exitW.x).to.equal(315);
-            expect(exitW.y).to.equal(401);
+            expect(exitW.y).to.equal(391);
           });
 
 
@@ -1056,17 +1056,17 @@ describe('features - resize', function() {
             commandStack.redo();
 
             // then
-            expect(exitN.x).to.equal(475);
+            expect(exitN.x).to.equal(465);
             expect(exitN.y).to.equal(291);
 
             expect(exitE.x).to.equal(635);
-            expect(exitE.y).to.equal(401);
+            expect(exitE.y).to.equal(391);
 
-            expect(exitS.x).to.equal(512);
+            expect(exitS.x).to.equal(500);
             expect(exitS.y).to.equal(511);
 
             expect(exitW.x).to.equal(315);
-            expect(exitW.y).to.equal(401);
+            expect(exitW.y).to.equal(391);
           }));
 
         });
@@ -1086,16 +1086,16 @@ describe('features - resize', function() {
           it('should execute', function() {
             // then
             expectSourceWaypoint(onPart1.waypoints, { x: 475, y: 205 });
-            expectTargetWaypoint(onPart1.waypoints, { x: 485, y: 291 });
+            expectTargetWaypoint(onPart1.waypoints, { x: 475, y: 291 });
 
             expectSourceWaypoint(onPart2.waypoints, { x: 725, y: 405 });
-            expectTargetWaypoint(onPart2.waypoints, { x: 655, y: 415 });
+            expectTargetWaypoint(onPart2.waypoints, { x: 655, y: 405 });
 
             expectSourceWaypoint(onPart3.waypoints, { x: 475, y: 605 });
-            expectTargetWaypoint(onPart3.waypoints, { x: 522, y: 539 });
+            expectTargetWaypoint(onPart3.waypoints, { x: 510, y: 539 });
 
             expectSourceWaypoint(onPart4.waypoints, { x: 225, y: 405 });
-            expectTargetWaypoint(onPart4.waypoints, { x: 315, y: 415 });
+            expectTargetWaypoint(onPart4.waypoints, { x: 315, y: 405 });
           });
 
 
@@ -1125,16 +1125,16 @@ describe('features - resize', function() {
 
             // then
             expectSourceWaypoint(onPart1.waypoints, { x: 475, y: 205 });
-            expectTargetWaypoint(onPart1.waypoints, { x: 485, y: 291 });
+            expectTargetWaypoint(onPart1.waypoints, { x: 475, y: 291 });
 
             expectSourceWaypoint(onPart2.waypoints, { x: 725, y: 405 });
-            expectTargetWaypoint(onPart2.waypoints, { x: 655, y: 415 });
+            expectTargetWaypoint(onPart2.waypoints, { x: 655, y: 405 });
 
             expectSourceWaypoint(onPart3.waypoints, { x: 475, y: 605 });
-            expectTargetWaypoint(onPart3.waypoints, { x: 522, y: 539 });
+            expectTargetWaypoint(onPart3.waypoints, { x: 510, y: 539 });
 
             expectSourceWaypoint(onPart4.waypoints, { x: 225, y: 405 });
-            expectTargetWaypoint(onPart4.waypoints, { x: 315, y: 415 });
+            expectTargetWaypoint(onPart4.waypoints, { x: 315, y: 405 });
           }));
 
         });
@@ -1208,17 +1208,17 @@ describe('features - resize', function() {
 
           it('should execute', function() {
             // then
-            expect(exitN.x).to.equal(475);
+            expect(exitN.x).to.equal(465);
             expect(exitN.y).to.equal(311);
 
             expect(exitE.x).to.equal(615);
-            expect(exitE.y).to.equal(401);
+            expect(exitE.y).to.equal(391);
 
-            expect(exitS.x).to.equal(508);
+            expect(exitS.x).to.equal(500);
             expect(exitS.y).to.equal(491);
 
             expect(exitW.x).to.equal(335);
-            expect(exitW.y).to.equal(401);
+            expect(exitW.y).to.equal(391);
           });
 
 
@@ -1247,17 +1247,17 @@ describe('features - resize', function() {
             commandStack.redo();
 
             // then
-            expect(exitN.x).to.equal(475);
+            expect(exitN.x).to.equal(465);
             expect(exitN.y).to.equal(311);
 
             expect(exitE.x).to.equal(615);
-            expect(exitE.y).to.equal(401);
+            expect(exitE.y).to.equal(391);
 
-            expect(exitS.x).to.equal(508);
+            expect(exitS.x).to.equal(500);
             expect(exitS.y).to.equal(491);
 
             expect(exitW.x).to.equal(335);
-            expect(exitW.y).to.equal(401);
+            expect(exitW.y).to.equal(391);
           }));
 
         });
@@ -1277,16 +1277,16 @@ describe('features - resize', function() {
           it('should execute', function() {
             // then
             expectSourceWaypoint(onPart1.waypoints, { x: 475, y: 205 });
-            expectTargetWaypoint(onPart1.waypoints, { x: 485, y: 311 });
+            expectTargetWaypoint(onPart1.waypoints, { x: 475, y: 311 });
 
             expectSourceWaypoint(onPart2.waypoints, { x: 725, y: 405 });
-            expectTargetWaypoint(onPart2.waypoints, { x: 635, y: 415 });
+            expectTargetWaypoint(onPart2.waypoints, { x: 635, y: 405 });
 
             expectSourceWaypoint(onPart3.waypoints, { x: 475, y: 605 });
-            expectTargetWaypoint(onPart3.waypoints, { x: 518, y: 519 });
+            expectTargetWaypoint(onPart3.waypoints, { x: 510, y: 519 });
 
             expectSourceWaypoint(onPart4.waypoints, { x: 225, y: 405 });
-            expectTargetWaypoint(onPart4.waypoints, { x: 335, y: 415 });
+            expectTargetWaypoint(onPart4.waypoints, { x: 335, y: 405 });
           });
 
 
@@ -1316,16 +1316,16 @@ describe('features - resize', function() {
 
             // then
             expectSourceWaypoint(onPart1.waypoints, { x: 475, y: 205 });
-            expectTargetWaypoint(onPart1.waypoints, { x: 485, y: 311 });
+            expectTargetWaypoint(onPart1.waypoints, { x: 475, y: 311 });
 
             expectSourceWaypoint(onPart2.waypoints, { x: 725, y: 405 });
-            expectTargetWaypoint(onPart2.waypoints, { x: 635, y: 415 });
+            expectTargetWaypoint(onPart2.waypoints, { x: 635, y: 405 });
 
             expectSourceWaypoint(onPart3.waypoints, { x: 475, y: 605 });
-            expectTargetWaypoint(onPart3.waypoints, { x: 518, y: 519 });
+            expectTargetWaypoint(onPart3.waypoints, { x: 510, y: 519 });
 
             expectSourceWaypoint(onPart4.waypoints, { x: 225, y: 405 });
-            expectTargetWaypoint(onPart4.waypoints, { x: 335, y: 415 });
+            expectTargetWaypoint(onPart4.waypoints, { x: 335, y: 405 });
           }));
 
         });
@@ -1391,17 +1391,17 @@ describe('features - resize', function() {
 
           it('should execute', function() {
             // then
-            expect(exitN.x).to.equal(455);
+            expect(exitN.x).to.equal(465);
             expect(exitN.y).to.equal(271);
 
             expect(exitE.x).to.equal(615);
-            expect(exitE.y).to.equal(381);
+            expect(exitE.y).to.equal(391);
 
-            expect(exitS.x).to.equal(492);
+            expect(exitS.x).to.equal(500);
             expect(exitS.y).to.equal(491);
 
             expect(exitW.x).to.equal(295);
-            expect(exitW.y).to.equal(381);
+            expect(exitW.y).to.equal(391);
           });
 
 
@@ -1430,17 +1430,17 @@ describe('features - resize', function() {
             commandStack.redo();
 
             // then
-            expect(exitN.x).to.equal(455);
+            expect(exitN.x).to.equal(465);
             expect(exitN.y).to.equal(271);
 
             expect(exitE.x).to.equal(615);
-            expect(exitE.y).to.equal(381);
+            expect(exitE.y).to.equal(391);
 
-            expect(exitS.x).to.equal(492);
+            expect(exitS.x).to.equal(500);
             expect(exitS.y).to.equal(491);
 
             expect(exitW.x).to.equal(295);
-            expect(exitW.y).to.equal(381);
+            expect(exitW.y).to.equal(391);
           }));
 
         });
@@ -1460,16 +1460,16 @@ describe('features - resize', function() {
           it('should execute', function() {
             // then
             expectSourceWaypoint(onPart1.waypoints, { x: 475, y: 205 });
-            expectTargetWaypoint(onPart1.waypoints, { x: 465, y: 271 });
+            expectTargetWaypoint(onPart1.waypoints, { x: 475, y: 271 });
 
             expectSourceWaypoint(onPart2.waypoints, { x: 725, y: 405 });
-            expectTargetWaypoint(onPart2.waypoints, { x: 635, y: 395 });
+            expectTargetWaypoint(onPart2.waypoints, { x: 635, y: 405 });
 
             expectSourceWaypoint(onPart3.waypoints, { x: 475, y: 605 });
-            expectTargetWaypoint(onPart3.waypoints, { x: 502, y: 519 });
+            expectTargetWaypoint(onPart3.waypoints, { x: 510, y: 519 });
 
             expectSourceWaypoint(onPart4.waypoints, { x: 225, y: 405 });
-            expectTargetWaypoint(onPart4.waypoints, { x: 295, y: 395 });
+            expectTargetWaypoint(onPart4.waypoints, { x: 295, y: 405 });
           });
 
 
@@ -1499,16 +1499,16 @@ describe('features - resize', function() {
 
             // then
             expectSourceWaypoint(onPart1.waypoints, { x: 475, y: 205 });
-            expectTargetWaypoint(onPart1.waypoints, { x: 465, y: 271 });
+            expectTargetWaypoint(onPart1.waypoints, { x: 475, y: 271 });
 
             expectSourceWaypoint(onPart2.waypoints, { x: 725, y: 405 });
-            expectTargetWaypoint(onPart2.waypoints, { x: 635, y: 395 });
+            expectTargetWaypoint(onPart2.waypoints, { x: 635, y: 405 });
 
             expectSourceWaypoint(onPart3.waypoints, { x: 475, y: 605 });
-            expectTargetWaypoint(onPart3.waypoints, { x: 502, y: 519 });
+            expectTargetWaypoint(onPart3.waypoints, { x: 510, y: 519 });
 
             expectSourceWaypoint(onPart4.waypoints, { x: 225, y: 405 });
-            expectTargetWaypoint(onPart4.waypoints, { x: 295, y: 395 });
+            expectTargetWaypoint(onPart4.waypoints, { x: 295, y: 405 });
           }));
 
         });
@@ -1585,7 +1585,7 @@ describe('features - resize', function() {
           it('should execute', function() {
             // then
             expectSourceWaypoint(discretionaryConnection.waypoints, { x: 165, y: 165 });
-            expectTargetWaypoint(discretionaryConnection.waypoints, { x: 245, y: 155 });
+            expectTargetWaypoint(discretionaryConnection.waypoints, { x: 245, y: 165 });
           });
 
 
@@ -1606,7 +1606,7 @@ describe('features - resize', function() {
 
             // then
             expectSourceWaypoint(discretionaryConnection.waypoints, { x: 165, y: 165 });
-            expectTargetWaypoint(discretionaryConnection.waypoints, { x: 245, y: 155 });
+            expectTargetWaypoint(discretionaryConnection.waypoints, { x: 245, y: 165 });
           }));
 
         });
@@ -1661,7 +1661,7 @@ describe('features - resize', function() {
           it('should execute', function() {
             // then
             expectSourceWaypoint(discretionaryConnection.waypoints, { x: 165, y: 165 });
-            expectTargetWaypoint(discretionaryConnection.waypoints, { x: 245, y: 175 });
+            expectTargetWaypoint(discretionaryConnection.waypoints, { x: 245, y: 165 });
           });
 
 
@@ -1682,7 +1682,7 @@ describe('features - resize', function() {
 
             // then
             expectSourceWaypoint(discretionaryConnection.waypoints, { x: 165, y: 165 });
-            expectTargetWaypoint(discretionaryConnection.waypoints, { x: 245, y: 175 });
+            expectTargetWaypoint(discretionaryConnection.waypoints, { x: 245, y: 165 });
           }));
 
         });
@@ -1839,7 +1839,7 @@ describe('features - resize', function() {
           it('should execute', function() {
             // then
             expectSourceWaypoint(discretionaryConnection.waypoints, { x: 165, y: 165 });
-            expectTargetWaypoint(discretionaryConnection.waypoints, { x: 225, y: 155 });
+            expectTargetWaypoint(discretionaryConnection.waypoints, { x: 225, y: 165 });
           });
 
 
@@ -1860,7 +1860,7 @@ describe('features - resize', function() {
 
             // then
             expectSourceWaypoint(discretionaryConnection.waypoints, { x: 165, y: 165 });
-            expectTargetWaypoint(discretionaryConnection.waypoints, { x: 225, y: 155 });
+            expectTargetWaypoint(discretionaryConnection.waypoints, { x: 225, y: 165 });
           }));
 
         });

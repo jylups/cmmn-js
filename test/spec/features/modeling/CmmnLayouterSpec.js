@@ -34,15 +34,18 @@ describe('features/modeling CmmnLayouter', function() {
         inject(function(connect, dragging, elementRegistry) {
 
           // given
-          var source = elementRegistry.get('EntryCriterion_1'),
-              target = elementRegistry.get('PlanItem_B');
+          // connect in the connection's own direction: since diagram-js 6
+          // Connect swaps source and target for reverse connections, and its
+          // preview of a swapped connection does not use the final end points
+          var source = elementRegistry.get('PlanItem_B'),
+              target = elementRegistry.get('EntryCriterion_1');
 
           // when
-          connect.start(canvasEvent({ x: 327, y: 187 }), source);
+          connect.start(canvasEvent({ x: 500, y: 240 }), source);
 
           dragging.move(canvasEvent({ x: 480, y: 300 }));
           dragging.hover({ element: target });
-          dragging.move(canvasEvent({ x: 500, y: 240 }));
+          dragging.move(canvasEvent({ x: 327, y: 187 }));
 
           var ctx = dragging.context();
           var context = ctx.data.context;
@@ -57,8 +60,7 @@ describe('features/modeling CmmnLayouter', function() {
 
           dragging.end();
 
-          // source <-> target got reversed meanwhile
-          var waypointsFinal = target.outgoing[0].waypoints.reverse();
+          var waypointsFinal = source.outgoing[0].waypoints;
 
           // then
           expect(waypointsFinal).to.exist;

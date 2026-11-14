@@ -557,7 +557,7 @@ function queryEntry(id) {
 function queryEntries() {
   var container = TestHelper.getCmmnJs().get('canvas').getContainer();
 
-  return domQueryAll('.djs-popup .entry', container);
+  return domQueryAll('.djs-popup .djs-popup-body .entry', container);
 }
 
 function triggerAction(id) {
