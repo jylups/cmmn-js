@@ -6,6 +6,7 @@ All notable changes to [@jylups/cmmn-js](https://github.com/jylups/cmmn-js) are 
 
 ___Note:__ Yet to be released changes appear here._
 
+* `FIX`: open models without a diagram on an empty diagram, with an import warning that their elements are not shown; what is drawn on it is saved, and the model saves as it was read while nothing is drawn ([jylups/cmmn-js-env#42](https://github.com/jylups/cmmn-js-env/issues/42))
 * `FEAT`: use the sentry of a criterion written as `flowable:sentryRef`, as some Flowable models do, and save it as `flowable:sentryRef` again ([jylups/cmmn-js-env#41](https://github.com/jylups/cmmn-js-env/issues/41))
 * `FEAT`: draw sentry connectors of Flowable models, whose `cmmndi:CMMNEdge` references the plan item and the criterion instead of the on-part, and save each edge in the form it was read; new connectors between a plan item and a criterion are saved in Flowable's form ([jylups/cmmn-js-env#40](https://github.com/jylups/cmmn-js-env/issues/40))
 * `CHORE`: publish prerelease versions under the `next` dist-tag

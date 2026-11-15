@@ -74,6 +74,11 @@ CMMN 1.1 references the on-part from the `cmmndi:CMMNEdge` of a sentry connector
 Some Flowable models write the sentry of a criterion as `flowable:sentryRef` instead of `sentryRef`; Flowable reads both. cmmn-js uses that sentry as the criterion's sentry, and saves it as `flowable:sentryRef` again, with the criterion's current sentry.
 
 
+### Models without a diagram
+
+CMMN 1.1 allows models without diagram interchange (DI), and many Flowable engine models have none. cmmn-js opens such a model on an empty diagram and reports the import warning `no diagram to display; the elements of <cmmn:Definitions …> are not shown`. Elements drawn on that diagram are saved with it; as long as nothing is drawn, the model saves as it was read, without a diagram.
+
+
 ### Dynamic Attach/Detach
 
 You may attach or detach the viewer dynamically to any element on the page, too:
