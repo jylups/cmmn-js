@@ -9,6 +9,7 @@ ___Note:__ Yet to be released changes appear here._
 * `CHORE`: publish prerelease versions under the `next` dist-tag
 * `DEPS`: update to `diagram-js@15.29.0`, `diagram-js-direct-editing@3.6.0`, `min-dash@5`, `min-dom@5`, `tiny-svg@4` and `object-refs@0.4`
 * `FEAT`: show the selection outline in the viewer and the navigated viewer too
+* `DEPS`: update to `@jylups/cmmn-moddle@6`; the viewer uses its Promise based `fromXML` and `toXML`, and `importXML` and `saveXML` keep their callbacks
 * `CHORE`: provide replace menu entries through the `getPopupMenuEntries` and `getPopupMenuHeaderEntries` methods of the popup menu provider interface
 * `FEAT`: keep criteria attached to a stage or case plan model in place when it is resized, if possible
 * `FIX`: show the day of the month in the build date of the distribution banner
