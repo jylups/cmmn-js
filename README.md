@@ -79,6 +79,24 @@ Some Flowable models write the sentry of a criterion as `flowable:sentryRef` ins
 CMMN 1.1 allows models without diagram interchange (DI), and many Flowable engine models have none. cmmn-js opens such a model on an empty diagram and reports the import warning `no diagram to display; the elements of <cmmn:Definitions …> are not shown`. Elements drawn on that diagram are saved with it; as long as nothing is drawn, the model saves as it was read, without a diagram.
 
 
+### Problems of a model
+
+The viewer and the modeler explain the problems of an opened model in plain language, from the warnings of the import: what is lost when the model is saved or not shown (a reference to an ID that is not in the file, content the parser could not read, diagram elements that cannot be shown, a model without a diagram), and what is kept but not recognised (unknown attributes). Elements with a problem that loses something get a marker on the canvas; clicking it selects the element.
+
+```javascript
+var problems = modeler.get('problems');
+
+problems.getProblems();         // all problems, the ones that lose something first
+problems.getProblems(element);  // the problems of a diagram element
+problems.getRemovedOnSave();    // what saving removes, to ask before saving
+
+modeler.on('problems.changed', function(event) {
+  // event.problems; a reference that is set, or an element that is removed, leaves the list
+});
+```
+
+Each problem has a `kind`, a `severity` (`error` or `info`), `removedOnSave`, a `message` and the `element` it concerns. Attributes the editor handles itself, such as `flowable:sentryRef`, are not reported; configure others with `problems: { ignoredAttributes: [ ... ] }`.
+
 ### Dynamic Attach/Detach
 
 You may attach or detach the viewer dynamically to any element on the page, too:
