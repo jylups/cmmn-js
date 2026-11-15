@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cmmn:definitions xmlns:dc="http://www.omg.org/spec/CMMN/20151109/DC" xmlns:di="http://www.omg.org/spec/CMMN/20151109/DI" xmlns:cmmndi="http://www.omg.org/spec/CMMN/20151109/CMMNDI" xmlns:cmmn="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:flowable="http://flowable.org/cmmn" id="Test" targetNamespace="http://bpmn.io/schema/cmmn">
+  <cmmn:case id="Case_1">
+    <cmmn:casePlanModel id="CasePlanModel_1" name="A CasePlanModel">
+      <cmmn:planItem id="PI_A" definitionRef="Task_1" />
+      <cmmn:planItem id="PI_B" definitionRef="Task_1">
+        <cmmn:entryCriterion id="EC_B" flowable:sentryRef="S_B" />
+      </cmmn:planItem>
+      <cmmn:planItem id="PI_D" definitionRef="Task_1">
+        <cmmn:exitCriterion id="XC_D" flowable:sentryRef="S_D" />
+      </cmmn:planItem>
+      <cmmn:planItem id="PI_G" definitionRef="Task_1">
+        <cmmn:entryCriterion id="EC_G" sentryRef="S_G" />
+      </cmmn:planItem>
+      <cmmn:planItem id="PI_H" definitionRef="Task_1">
+        <cmmn:entryCriterion id="EC_H" flowable:sentryRef="S_Missing" />
+      </cmmn:planItem>
+      <cmmn:sentry id="S_B">
+        <cmmn:planItemOnPart id="OP_AB" sourceRef="PI_A">
+          <cmmn:standardEvent>complete</cmmn:standardEvent>
+        </cmmn:planItemOnPart>
+      </cmmn:sentry>
+      <cmmn:sentry id="S_D">
+        <cmmn:planItemOnPart id="OP_AD" sourceRef="PI_A">
+          <cmmn:standardEvent>complete</cmmn:standardEvent>
+        </cmmn:planItemOnPart>
+      </cmmn:sentry>
+      <cmmn:sentry id="S_G">
+        <cmmn:planItemOnPart id="OP_AG" sourceRef="PI_A">
+          <cmmn:standardEvent>complete</cmmn:standardEvent>
+        </cmmn:planItemOnPart>
+      </cmmn:sentry>
+      <cmmn:task id="Task_1" />
+    </cmmn:casePlanModel>
+  </cmmn:case>
+  <cmmndi:CMMNDI>
+    <cmmndi:CMMNDiagram id="Diagram_1">
+      <cmmndi:CMMNShape id="DI_CasePlanModel_1" cmmnElementRef="CasePlanModel_1">
+        <dc:Bounds x="25" y="25" width="850" height="620" />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape id="DI_PI_A" cmmnElementRef="PI_A">
+        <dc:Bounds x="100" y="300" width="97" height="76" />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape id="DI_PI_B" cmmnElementRef="PI_B">
+        <dc:Bounds x="400" y="50" width="97" height="76" />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape id="DI_EC_B" cmmnElementRef="EC_B">
+        <dc:Bounds x="390" y="74" width="20" height="28" />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape id="DI_PI_D" cmmnElementRef="PI_D">
+        <dc:Bounds x="400" y="350" width="97" height="76" />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape id="DI_XC_D" cmmnElementRef="XC_D">
+        <dc:Bounds x="390" y="374" width="20" height="28" />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape id="DI_PI_G" cmmnElementRef="PI_G">
+        <dc:Bounds x="650" y="300" width="97" height="76" />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape id="DI_EC_G" cmmnElementRef="EC_G">
+        <dc:Bounds x="640" y="324" width="20" height="28" />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape id="DI_PI_H" cmmnElementRef="PI_H">
+        <dc:Bounds x="650" y="500" width="97" height="76" />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape id="DI_EC_H" cmmnElementRef="EC_H">
+        <dc:Bounds x="640" y="524" width="20" height="28" />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNEdge id="E_AB" cmmnElementRef="PI_A" targetCMMNElementRef="EC_B">
+        <di:waypoint x="197" y="338" />
+        <di:waypoint x="390" y="88" />
+      </cmmndi:CMMNEdge>
+      <cmmndi:CMMNEdge id="E_AD" cmmnElementRef="XC_D" targetCMMNElementRef="PI_A">
+        <di:waypoint x="390" y="388" />
+        <di:waypoint x="197" y="338" />
+      </cmmndi:CMMNEdge>
+      <cmmndi:CMMNEdge id="E_AG" cmmnElementRef="PI_A" targetCMMNElementRef="EC_G">
+        <di:waypoint x="197" y="338" />
+        <di:waypoint x="640" y="338" />
+      </cmmndi:CMMNEdge>
+    </cmmndi:CMMNDiagram>
+  </cmmndi:CMMNDI>
+</cmmn:definitions>

@@ -71,6 +71,8 @@ The `keyboard.bindTo` option of earlier versions is no longer supported.
 
 CMMN 1.1 references the on-part from the `cmmndi:CMMNEdge` of a sentry connector. Flowable writes the plan item and the criterion the connector joins instead, in either order, and only places edges written that way. cmmn-js reads both forms and saves each edge in the form it was read. New connectors from a plan item to a criterion are saved in Flowable's form, with the plan item first; a connector from an exit criterion stays in the CMMN form, which Flowable's form cannot express.
 
+Some Flowable models write the sentry of a criterion as `flowable:sentryRef` instead of `sentryRef`; Flowable reads both. cmmn-js uses that sentry as the criterion's sentry, and saves it as `flowable:sentryRef` again, with the criterion's current sentry.
+
 
 ### Dynamic Attach/Detach
 
