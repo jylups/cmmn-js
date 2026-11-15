@@ -6,6 +6,7 @@ All notable changes to [@jylups/cmmn-js](https://github.com/jylups/cmmn-js) are 
 
 ___Note:__ Yet to be released changes appear here._
 
+* `FEAT`: let checks add problems with `problems.addCheck(check)`; a check is called with the model's definitions after each import and each change ([jylups/cmmn-js-env#49](https://github.com/jylups/cmmn-js-env/issues/49))
 * `FEAT`: explain the problems of an opened model in plain language with the `problems` service: what is lost on save or not shown, and what is kept but not recognised; mark the elements with problems on the canvas, and list what saving removes ([jylups/cmmn-js-env#47](https://github.com/jylups/cmmn-js-env/issues/47))
 * `FIX`: open models without a diagram on an empty diagram, with an import warning that their elements are not shown; what is drawn on it is saved, and the model saves as it was read while nothing is drawn ([jylups/cmmn-js-env#42](https://github.com/jylups/cmmn-js-env/issues/42))
 * `FEAT`: use the sentry of a criterion written as `flowable:sentryRef`, as some Flowable models do, and save it as `flowable:sentryRef` again ([jylups/cmmn-js-env#41](https://github.com/jylups/cmmn-js-env/issues/41))

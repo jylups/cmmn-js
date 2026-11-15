@@ -97,6 +97,19 @@ modeler.on('problems.changed', function(event) {
 
 Each problem has a `kind`, a `severity` (`error` or `info`), `removedOnSave`, a `message` and the `element` it concerns. Attributes the editor handles itself, such as `flowable:sentryRef`, are not reported; configure others with `problems: { ignoredAttributes: [ ... ] }`.
 
+Checks add problems the import does not see, for example parts of a model an engine does not read. A check is called with the model's definitions after each import and each change, and returns problems with the model element they concern:
+
+```javascript
+problems.addCheck(function(definitions) {
+  return [ {
+    kind: 'not-read',
+    severity: 'info',
+    message: 'Case execution listeners are not read by Flowable.',
+    businessObject: listener
+  } ];
+});
+```
+
 ### Dynamic Attach/Detach
 
 You may attach or detach the viewer dynamically to any element on the page, too:
