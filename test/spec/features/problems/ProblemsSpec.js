@@ -2,6 +2,8 @@
 
 require('../../../TestHelper');
 
+var getCmmnJs = require('../../../helper').getCmmnJs;
+
 /* global bootstrapModeler, inject */
 
 var coreModule = require('../../../../lib/core'),
@@ -173,6 +175,127 @@ describe('features - problems', function() {
         expect(kinds(problems.getRemovedOnSave())).to.eql([ 'unparsable-content', 'unresolved-reference' ]);
       }
     ));
+
+  });
+
+
+  describe('checks', function() {
+
+    beforeEach(bootstrapModeler(diagramXML, { modules: testModules }));
+
+
+    /**
+     * A check that reports plan items without a name.
+     */
+    function unnamedPlanItems(definitions) {
+      var problems = [];
+
+      definitions.get('cases').forEach(function(caseElement) {
+        caseElement.get('casePlanModel').get('planItems').forEach(function(planItem) {
+          if (!planItem.get('name')) {
+            problems.push({
+              kind: 'unnamed-plan-item',
+              severity: 'info',
+              message: 'Plan item ' + planItem.get('id') + ' has no name.',
+              businessObject: planItem
+            });
+          }
+        });
+      });
+
+      return problems;
+    }
+
+
+    it('should add what a check finds', inject(function(problems, elementRegistry, modeling) {
+
+      // given
+      var planItem = elementRegistry.get('PI_Task');
+
+      // when
+      problems.addCheck(unnamedPlanItems);
+
+      // then
+      var found = problems.getProblems(planItem).filter(function(problem) {
+        return problem.kind === 'unnamed-plan-item';
+      });
+
+      expect(found).to.have.length(1);
+      expect(found[0].message).to.eql('Plan item PI_Task has no name.');
+      expect(found[0].removedOnSave).to.be.false;
+    }));
+
+
+    it('should check again after a change', inject(function(problems, elementRegistry, modeling, eventBus) {
+
+      // given
+      var planItem = elementRegistry.get('PI_Task'),
+          events = 0;
+
+      problems.addCheck(unnamedPlanItems);
+
+      eventBus.on('problems.changed', function() {
+        events++;
+      });
+
+      // when
+      modeling.updateProperties(planItem, { name: 'Review' });
+
+      // then
+      expect(kinds(problems.getProblems(planItem))).not.to.include('unnamed-plan-item');
+      expect(events).to.eql(1);
+
+      // when
+      modeling.updateProperties(planItem, { name: undefined });
+
+      // then
+      expect(kinds(problems.getProblems(planItem))).to.include('unnamed-plan-item');
+      expect(events).to.eql(2);
+    }));
+
+
+    it('should check a model imported again', function(done) {
+
+      inject(function(problems) {
+
+        // given
+        problems.addCheck(unnamedPlanItems);
+
+        // when
+        getCmmnJs().importXML(diagramXML, function(err) {
+
+          if (err) {
+            return done(err);
+          }
+
+          // then
+          expect(kinds(problems.getProblems())).to.include('unnamed-plan-item');
+
+          done();
+        });
+      })();
+    });
+
+
+    it('should not fire without a change in problems', inject(function(problems, elementRegistry, modeling, eventBus) {
+
+      // given
+      var events = 0;
+
+      problems.addCheck(unnamedPlanItems);
+
+      modeling.updateProperties(elementRegistry.get('PI_Unknown'), { name: 'Approve' });
+
+      eventBus.on('problems.changed', function() {
+        events++;
+      });
+
+      // when
+      modeling.updateProperties(elementRegistry.get('PI_Unknown'), { name: 'Approve it' });
+
+      // then
+      expect(events).to.eql(0);
+    }));
 
   });
 
