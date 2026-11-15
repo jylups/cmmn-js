@@ -1,6 +1,6 @@
 {
   "name": "@jylups/cmmn-js",
-  "version": "0.22.0-next.8",
+  "version": "0.22.0-next.9",
   "description": "A cmmn 1.1 toolkit",
   "scripts": {
     "all": "run-s lint test distro test:distro",
