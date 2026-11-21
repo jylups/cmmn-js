@@ -110,6 +110,33 @@ problems.addCheck(function(definitions) {
 });
 ```
 
+### Touch
+
+Touch editing is an optional module for the modeler, for tablets and phones:
+
+```javascript
+var Modeler = require('@jylups/cmmn-js/lib/Modeler'),
+    touchModule = require('@jylups/cmmn-js/lib/features/touch');
+
+var modeler = new Modeler({
+  container: '#canvas',
+  additionalModules: [ touchModule ]
+});
+```
+
+Include `assets/cmmn-js-touch.css` too (also in `dist/assets`), for larger touch targets: wider bands around shapes and connections, bigger resize handles, bendpoints and context pad entries.
+
+- **Gestures:**
+  - a tap selects and shows the context pad;
+  - a drag moves a shape, a bendpoint or a segment;
+  - one finger on empty space pans, and two fingers pinch to zoom;
+  - a double tap edits a label;
+  - a long press shows the context pad.
+- **Palette and context pad:** a drag from an entry creates or connects. A tapped create entry waits for a tap on the canvas, and a tap anywhere else cancels it.
+- **Only on touch screens:** the module turns itself on only where `(pointer: coarse)` matches, so a desktop with a mouse is unchanged. After a mouse or trackpad press, for example on an iPad with a trackpad, the lasso, space and connect tools work as they do with a mouse.
+
+The gestures come from [bpmn-js-touch-interaction](https://github.com/krasucki/bpmn-js-touch-interaction) (MIT, see `lib/features/touch/LICENSE`).
+
 ### Dynamic Attach/Detach
 
 You may attach or detach the viewer dynamically to any element on the page, too:

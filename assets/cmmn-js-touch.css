@@ -1,0 +1,75 @@
+/*
+ * Larger targets on touch screens, for lib/features/touch. diagram-js sizes them for a mouse:
+ * a 15 px band around shapes and along connections, 20 px resize handles,
+ * 10 px bendpoints and 22 px context pad entries. Apple and Google ask for
+ * about 44 px for a finger.
+ *
+ * Only for (pointer: coarse), so a Mac keeps the mouse sizes. An iPad with a
+ * trackpad is still coarse and gets the larger targets too.
+ */
+@media (pointer: coarse) {
+
+  /* shapes: 13 px around each one instead of 7.5, so a criterion (20 x 28)
+     is about 46 x 54 to a finger. diagram-js sets the width as an inline
+     style, hence !important; its drop target rule (attach-ok) is more
+     specific and still wins while dragging. */
+  .djs-shape > .djs-hit-all {
+    stroke-width: 26px !important;
+  }
+
+  /* connections: a 30 px band instead of 15 */
+  .djs-connection > .djs-hit-stroke,
+  .djs-connection > .djs-hit-click-stroke {
+    stroke-width: 30px !important;
+  }
+
+  /* resize handles, bendpoints and segment draggers: scaled around their
+     centre, since their size is set in the drawing code */
+  .djs-resizer-hit,
+  .djs-resizer-visual,
+  .djs-bendpoint > .djs-hit,
+  .djs-bendpoint > .djs-visual,
+  .djs-segment-dragger > g > .djs-hit,
+  .djs-segment-dragger > g > .djs-visual {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  /* 20 px to 44 px, and a 12 px handle to see */
+  .djs-resizer-hit {
+    transform: scale(2.2);
+  }
+
+  .djs-resizer-visual {
+    transform: scale(1.5);
+  }
+
+  /* 20 px to 44 px across, and a 12 px dot to see */
+  .djs-bendpoint > .djs-hit {
+    transform: scale(2.2);
+  }
+
+  .djs-bendpoint > .djs-visual {
+    transform: scale(1.5);
+  }
+
+  /* a 17 px band to about 40 px across the segment */
+  .djs-segment-dragger > g > .djs-hit {
+    transform: scaleY(2.4);
+  }
+
+  .djs-segment-dragger > g > .djs-visual {
+    transform: scale(1.5);
+  }
+
+  /* context pad: 36 px entries instead of 22, still three to a row */
+  .djs-context-pad {
+    width: 114px;
+  }
+
+  .djs-context-pad .entry {
+    width: 36px;
+    height: 36px;
+    font-size: 32px;
+  }
+}

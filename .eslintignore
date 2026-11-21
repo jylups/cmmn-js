@@ -1,1 +1,3 @@
 dist
+# a copy of bpmn-js-touch-interaction, kept close to upstream (lib/features/touch)
+lib/features/touch/TouchInteraction.js
