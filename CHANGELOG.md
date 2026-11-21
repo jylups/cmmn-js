@@ -6,6 +6,8 @@ All notable changes to [@jylups/cmmn-js](https://github.com/jylups/cmmn-js) are 
 
 ___Note:__ Yet to be released changes appear here._
 
+* `FEAT`: add touch editing as an optional module, `lib/features/touch`, with larger touch targets in `assets/cmmn-js-touch.css`. Its gestures come from bpmn-js-touch-interaction, and it fixes what cmmn-js needs on top of them. It turns itself on only on touch screens ([jylups/cmmn-js-env#55](https://github.com/jylups/cmmn-js-env/issues/55))
+
 ## 0.22.0
 
 * `CHORE`: depend on `@jylups/cmmn-moddle@^6.1.1`, for the generic extension elements and white space around `=` in attributes
