@@ -6,6 +6,8 @@ All notable changes to [@jylups/cmmn-js](https://github.com/jylups/cmmn-js) are 
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.24.0
+
 * `FEAT`: append from the context pad as Flowable Design does ([jylups/cmmn-js-env#83](https://github.com/jylups/cmmn-js-env/issues/83)): a human task or milestone placed to the right, with an entry criterion connected to the source, in one undoable step (`appendConnected`), and an exit criterion to attach
 * `CHORE`: type icons and palette icons in Flowable Design's thin lines (1 unit for task icons, 1.4 for listener icons, scaling with the zoom; palette cells and icons smaller in `assets/cmmn-js-flowable.css`)
 * `FEAT`: the palette in the groups of Flowable Design ([jylups/cmmn-js-env#78](https://github.com/jylups/cmmn-js-env/issues/78)): Tasks, Containers, Sentries and Listeners open a menu of their items; text annotation, case plan model and case file item stay as entries; a Favorites row creates the most used items directly (`palette.favorites`, [#82](https://github.com/jylups/cmmn-js-env/issues/82))
