@@ -61,8 +61,8 @@ describe('label bounds', function() {
         // when
         updateLabel(shape, 'Foooooooooobar');
 
-        // then
-        expect(shape.label.width).to.be.within(82, 88);
+        // then: the width depends on the system font of the renderer's theme
+        expect(shape.label.width).to.be.within(76, 100);
       }));
 
 

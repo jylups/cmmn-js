@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cmmn:definitions id="Test"
+                  targetNamespace="http://bpmn.io/schema/cmmn"
+                  xmlns:dc="http://www.omg.org/spec/CMMN/20151109/DC"
+                  xmlns:di="http://www.omg.org/spec/CMMN/20151109/DI"
+                  xmlns:cmmndi="http://www.omg.org/spec/CMMN/20151109/CMMNDI"
+                  xmlns:cmmn="http://www.omg.org/spec/CMMN/20151109/MODEL">
+  <cmmn:case id="Case_1">
+    <cmmn:casePlanModel name="Plan" id="CasePlanModel_1">
+      <cmmn:planItem definitionRef="Stage_1" id="PI_Stage">
+        <cmmn:entryCriterion id="Entry_Condition" sentryRef="Sentry_Condition" />
+        <cmmn:entryCriterion id="Entry_Plain" sentryRef="Sentry_Plain" />
+        <cmmn:exitCriterion id="Exit_Condition" sentryRef="Sentry_Condition" />
+      </cmmn:planItem>
+      <cmmn:planItem definitionRef="Task_Long" id="PI_Long" />
+      <cmmn:sentry id="Sentry_Condition">
+        <cmmn:ifPart id="IfPart_1"><cmmn:condition>${approved}</cmmn:condition></cmmn:ifPart>
+      </cmmn:sentry>
+      <cmmn:sentry id="Sentry_Plain" />
+      <cmmn:stage name="A Stage" id="Stage_1" />
+      <cmmn:task name="Review the application of the customer and every attached document before approving it" id="Task_Long" />
+    </cmmn:casePlanModel>
+  </cmmn:case>
+  <cmmndi:CMMNDI>
+    <cmmndi:CMMNDiagram id="Diagram_1">
+      <cmmndi:Size height="500" width="700"/>
+      <cmmndi:CMMNShape cmmnElementRef="CasePlanModel_1" id="DI_CasePlanModel_1"><dc:Bounds height="300" width="600" x="25" y="25"/></cmmndi:CMMNShape>
+      <cmmndi:CMMNShape cmmnElementRef="PI_Stage" id="DI_PI_Stage"><dc:Bounds height="170" width="250" x="80" y="80" /></cmmndi:CMMNShape>
+      <cmmndi:CMMNShape cmmnElementRef="Entry_Condition" id="DI_Entry_Condition"><dc:Bounds height="28" width="20" x="70" y="110" /></cmmndi:CMMNShape>
+      <cmmndi:CMMNShape cmmnElementRef="Entry_Plain" id="DI_Entry_Plain"><dc:Bounds height="28" width="20" x="70" y="160" /></cmmndi:CMMNShape>
+      <cmmndi:CMMNShape cmmnElementRef="Exit_Condition" id="DI_Exit_Condition"><dc:Bounds height="28" width="20" x="320" y="110" /></cmmndi:CMMNShape>
+      <cmmndi:CMMNShape cmmnElementRef="PI_Long" id="DI_PI_Long"><dc:Bounds height="80" width="100" x="420" y="100" /></cmmndi:CMMNShape>
+    </cmmndi:CMMNDiagram>
+  </cmmndi:CMMNDI>
+</cmmn:definitions>

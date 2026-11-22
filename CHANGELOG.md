@@ -6,6 +6,9 @@ All notable changes to [@jylups/cmmn-js](https://github.com/jylups/cmmn-js) are 
 
 ___Note:__ Yet to be released changes appear here._
 
+* `FEAT`: draw diagrams in the style of Flowable Design ([jylups/cmmn-js-env#71](https://github.com/jylups/cmmn-js-env/issues/71), [#72](https://github.com/jylups/cmmn-js-env/issues/72), [#73](https://github.com/jylups/cmmn-js-env/issues/73)): labels in a system sans-serif font, wrapped and cut with an ellipsis when they don't fit; stages as rounded rectangles; slate lines, thinner, with the case plan model darker; dotted connectors; criteria whose sentry has a condition in amber, as Flowable Design marks them
+* `FEAT`: the look can be configured with `cmmnRenderer` (colors, font, line widths, radii, `stageShape: 'octagon'` for the angled stages of the CMMN specification); the defaults are `CmmnRenderer.DEFAULT_THEME`
+
 ## 0.23.0
 
 * `FEAT`: add touch editing as an optional module, `lib/features/touch`, with larger touch targets in `assets/cmmn-js-touch.css`. Its gestures come from bpmn-js-touch-interaction, and it fixes what cmmn-js needs on top of them. It turns itself on only on touch screens ([jylups/cmmn-js-env#55](https://github.com/jylups/cmmn-js-env/issues/55))
