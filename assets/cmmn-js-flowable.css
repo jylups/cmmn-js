@@ -86,3 +86,26 @@
 .djs-context-pad .group[data-group="connect"] .entry {
   color: #f8fafc;
 }
+
+/* the palette: smaller cells and icons with thin lines, as in Flowable Design */
+.djs-palette .entry,
+.djs-palette .djs-palette-toggle {
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  font-size: 22px;
+}
+
+.djs-palette .entry img {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}
+
+.djs-palette.two-column.open {
+  width: 72px;
+}
+
+.djs-palette .separator {
+  margin: 4px 6px;
+}
