@@ -1,0 +1,88 @@
+/**
+ * Selection, hover and context pad in the style of Flowable Design, to use
+ * with diagram-js.css and the renderer's default theme.
+ */
+
+.djs-parent {
+  --accent-color: #0e7490;
+  --element-selected-outline-stroke-color: #0e7490;
+  --element-selected-outline-secondary-stroke-color: #67e8f9;
+  --lasso-fill-color: rgba(14, 116, 144, 0.08);
+  --context-pad-entry-background-color: transparent;
+  --context-pad-entry-hover-background-color: rgba(255, 255, 255, 0.16);
+}
+
+/* a selected element: a solid outline, close to the shape */
+.djs-element.selected .djs-outline {
+  stroke-width: 1.5px;
+  stroke-dasharray: none;
+}
+
+/* a hovered element: a light outline */
+.djs-shape.hover:not(.selected) .djs-outline {
+  visibility: visible;
+  stroke: #94a3b8;
+  stroke-width: 1px;
+}
+
+/* the context pad: edit actions in a light column, what to add in a dark one */
+.djs-context-pad.open {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-auto-rows: min-content;
+  column-gap: 4px;
+  width: auto;
+}
+
+.djs-context-pad .group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 4px;
+  pointer-events: all;
+}
+
+.djs-context-pad .group[data-group="edit"] {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  align-self: start;
+  border-radius: 6px;
+  background-color: #e2e8f0;
+}
+
+.djs-context-pad .group[data-group="model"],
+.djs-context-pad .group[data-group="connect"] {
+  grid-column: 2;
+  background-color: #1e293b;
+}
+
+.djs-context-pad .group[data-group="model"] {
+  border-radius: 6px 6px 0 0;
+}
+
+.djs-context-pad .group[data-group="connect"] {
+  border-radius: 0 0 6px 6px;
+}
+
+.djs-context-pad .group[data-group="model"]:last-child {
+  border-radius: 6px;
+}
+
+.djs-context-pad .entry {
+  margin: 0;
+  box-shadow: none;
+  border-radius: 4px;
+}
+
+.djs-context-pad .group[data-group="edit"] .entry {
+  color: #334155;
+}
+
+.djs-context-pad .group[data-group="edit"] .entry:hover {
+  background-color: #cbd5e1;
+}
+
+.djs-context-pad .group[data-group="model"] .entry,
+.djs-context-pad .group[data-group="connect"] .entry {
+  color: #f8fafc;
+}

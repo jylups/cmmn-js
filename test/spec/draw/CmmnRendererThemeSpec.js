@@ -99,4 +99,53 @@ describe('draw - cmmn renderer theme', function() {
 
   });
 
+
+
+  describe('Flowable types', function() {
+
+    var typesXML = require('../../fixtures/cmmn/renderer/flowable-types.cmmn');
+
+    var TYPE_ICONS = require('../../../lib/draw/CmmnRenderer').TYPE_ICONS;
+
+    beforeEach(bootstrapViewer(typesXML, { modules: [ coreModule ] }));
+
+    function icon(elementRegistry, id) {
+      return domQuery('.cjs-type-icon', visual(elementRegistry, id));
+    }
+
+
+    it('should draw the icon of each task type', inject(function(elementRegistry) {
+
+      // then
+      [
+        [ 'PI_java', 'java' ],
+        [ 'PI_script', 'script' ],
+        [ 'PI_http', 'http' ],
+        [ 'PI_mail', 'mail' ],
+        [ 'PI_send', 'send-event' ],
+        [ 'PI_worker', 'external-worker' ],
+        [ 'PI_page', 'casePage' ]
+      ].forEach(function(item) {
+        var path = icon(elementRegistry, item[0]);
+
+        expect(path, item[0]).to.exist;
+        expect(path.getAttribute('d')).to.equal(TYPE_ICONS.task[item[1]]);
+      });
+
+      expect(icon(elementRegistry, 'PI_plain')).not.to.exist;
+    }));
+
+
+    it('should draw the icon of each event listener type', inject(function(elementRegistry) {
+
+      // then
+      expect(icon(elementRegistry, 'PI_signal').getAttribute('d')).to.equal(TYPE_ICONS.listener.signal);
+      expect(icon(elementRegistry, 'PI_variable').getAttribute('d')).to.equal(TYPE_ICONS.listener.variable);
+      expect(icon(elementRegistry, 'PI_reactivate').getAttribute('d')).to.equal(TYPE_ICONS.listener.reactivate);
+      expect(icon(elementRegistry, 'PI_registry').getAttribute('d')).to.equal(TYPE_ICONS.listener.registry);
+      expect(icon(elementRegistry, 'PI_listener')).not.to.exist;
+    }));
+
+  });
+
 });

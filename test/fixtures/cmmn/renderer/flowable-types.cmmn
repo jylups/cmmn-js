@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cmmn:definitions id="Test"
+                  targetNamespace="http://bpmn.io/schema/cmmn"
+                  xmlns:dc="http://www.omg.org/spec/CMMN/20151109/DC"
+                  xmlns:di="http://www.omg.org/spec/CMMN/20151109/DI"
+                  xmlns:cmmndi="http://www.omg.org/spec/CMMN/20151109/CMMNDI"
+                  xmlns:cmmn="http://www.omg.org/spec/CMMN/20151109/MODEL"
+                  xmlns:flowable="http://flowable.org/cmmn">
+  <cmmn:case id="Case_1">
+    <cmmn:casePlanModel name="Types" id="CasePlanModel_1">
+      <cmmn:planItem definitionRef="T_java" id="PI_java" />
+      <cmmn:planItem definitionRef="T_script" id="PI_script" />
+      <cmmn:planItem definitionRef="T_http" id="PI_http" />
+      <cmmn:planItem definitionRef="T_mail" id="PI_mail" />
+      <cmmn:planItem definitionRef="T_send" id="PI_send" />
+      <cmmn:planItem definitionRef="T_worker" id="PI_worker" />
+      <cmmn:planItem definitionRef="T_page" id="PI_page" />
+      <cmmn:planItem definitionRef="T_plain" id="PI_plain" />
+      <cmmn:planItem definitionRef="L_signal" id="PI_signal" />
+      <cmmn:planItem definitionRef="L_variable" id="PI_variable" />
+      <cmmn:planItem definitionRef="L_reactivate" id="PI_reactivate" />
+      <cmmn:planItem definitionRef="L_registry" id="PI_registry" />
+      <cmmn:planItem definitionRef="L_plain" id="PI_listener" />
+      <cmmn:task id="T_java" name="Java" flowable:type="java" />
+      <cmmn:task id="T_script" name="Script" flowable:type="script" />
+      <cmmn:task id="T_http" name="HTTP" flowable:type="http" />
+      <cmmn:task id="T_mail" name="Mail" flowable:type="mail" />
+      <cmmn:task id="T_send" name="Send" flowable:type="send-event" />
+      <cmmn:task id="T_worker" name="Worker" flowable:type="external-worker" />
+      <cmmn:task id="T_page" name="Page" flowable:type="casePage" />
+      <cmmn:task id="T_plain" name="Plain" />
+      <cmmn:eventListener id="L_signal" name="Signal" flowable:eventType="signal" />
+      <cmmn:eventListener id="L_variable" name="Variable" flowable:eventType="variable" />
+      <cmmn:eventListener id="L_reactivate" name="Reactivate" flowable:eventType="reactivate" />
+      <cmmn:eventListener id="L_registry" name="Order received">
+        <cmmn:extensionElements>
+          <flowable:eventType>orderReceived</flowable:eventType>
+        </cmmn:extensionElements>
+      </cmmn:eventListener>
+      <cmmn:eventListener id="L_plain" name="Plain listener" />
+    </cmmn:casePlanModel>
+  </cmmn:case>
+  <cmmndi:CMMNDI>
+    <cmmndi:CMMNDiagram id="Diagram_1">
+      <cmmndi:CMMNShape cmmnElementRef="CasePlanModel_1" id="DI_CPM"><dc:Bounds height="400" width="1000" x="20" y="20"/></cmmndi:CMMNShape>
+      <cmmndi:CMMNShape cmmnElementRef="PI_java" id="DI_java"><dc:Bounds height="80" width="100" x="40" y="60"/></cmmndi:CMMNShape>
+      <cmmndi:CMMNShape cmmnElementRef="PI_script" id="DI_script"><dc:Bounds height="80" width="100" x="160" y="60"/></cmmndi:CMMNShape>
+      <cmmndi:CMMNShape cmmnElementRef="PI_http" id="DI_http"><dc:Bounds height="80" width="100" x="280" y="60"/></cmmndi:CMMNShape>
+      <cmmndi:CMMNShape cmmnElementRef="PI_mail" id="DI_mail"><dc:Bounds height="80" width="100" x="400" y="60"/></cmmndi:CMMNShape>
+      <cmmndi:CMMNShape cmmnElementRef="PI_send" id="DI_send"><dc:Bounds height="80" width="100" x="520" y="60"/></cmmndi:CMMNShape>
+      <cmmndi:CMMNShape cmmnElementRef="PI_worker" id="DI_worker"><dc:Bounds height="80" width="100" x="640" y="60"/></cmmndi:CMMNShape>
+      <cmmndi:CMMNShape cmmnElementRef="PI_page" id="DI_page"><dc:Bounds height="80" width="100" x="760" y="60"/></cmmndi:CMMNShape>
+      <cmmndi:CMMNShape cmmnElementRef="PI_plain" id="DI_plain"><dc:Bounds height="80" width="100" x="880" y="60"/></cmmndi:CMMNShape>
+      <cmmndi:CMMNShape cmmnElementRef="PI_signal" id="DI_signal"><dc:Bounds height="36" width="36" x="60" y="250"/></cmmndi:CMMNShape>
+      <cmmndi:CMMNShape cmmnElementRef="PI_variable" id="DI_variable"><dc:Bounds height="36" width="36" x="160" y="250"/></cmmndi:CMMNShape>
+      <cmmndi:CMMNShape cmmnElementRef="PI_reactivate" id="DI_reactivate"><dc:Bounds height="36" width="36" x="260" y="250"/></cmmndi:CMMNShape>
+      <cmmndi:CMMNShape cmmnElementRef="PI_registry" id="DI_registry"><dc:Bounds height="36" width="36" x="360" y="250"/></cmmndi:CMMNShape>
+      <cmmndi:CMMNShape cmmnElementRef="PI_listener" id="DI_listener"><dc:Bounds height="36" width="36" x="460" y="250"/></cmmndi:CMMNShape>
+    </cmmndi:CMMNDiagram>
+  </cmmndi:CMMNDI>
+</cmmn:definitions>
