@@ -6,6 +6,8 @@ All notable changes to [@jylups/cmmn-js](https://github.com/jylups/cmmn-js) are 
 
 ___Note:__ Yet to be released changes appear here._
 
+* `FEAT`: icons for Flowable's task types (service, script, HTTP, mail, send event, external worker, case page, RPA) and event listener types (signal, variable, intent, reactivate, document, and event registry events) ([jylups/cmmn-js-env#75](https://github.com/jylups/cmmn-js-env/issues/75)); `CmmnRenderer.TYPE_ICONS` holds them
+* `FEAT`: `assets/cmmn-js-flowable.css`, selection, hover and context pad in the style of Flowable Design: a solid outline, a light hover outline, and the context pad's edit actions in a light column and what to add in a dark one ([jylups/cmmn-js-env#76](https://github.com/jylups/cmmn-js-env/issues/76))
 * `FEAT`: draw diagrams in the style of Flowable Design ([jylups/cmmn-js-env#71](https://github.com/jylups/cmmn-js-env/issues/71), [#72](https://github.com/jylups/cmmn-js-env/issues/72), [#73](https://github.com/jylups/cmmn-js-env/issues/73)): labels in a system sans-serif font, wrapped and cut with an ellipsis when they don't fit; stages as rounded rectangles; slate lines, thinner, with the case plan model darker; dotted connectors; criteria whose sentry has a condition in amber, as Flowable Design marks them
 * `FEAT`: the look can be configured with `cmmnRenderer` (colors, font, line widths, radii, `stageShape: 'octagon'` for the angled stages of the CMMN specification); the defaults are `CmmnRenderer.DEFAULT_THEME`
 
