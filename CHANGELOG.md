@@ -6,6 +6,8 @@ All notable changes to [@jylups/cmmn-js](https://github.com/jylups/cmmn-js) are 
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.24.1
+
 * `FIX`: on touch screens, create the items of the palette's group menus ([jylups/cmmn-js-env#96](https://github.com/jylups/cmmn-js-env/issues/96)): tap an item and then the canvas, or drag it onto the canvas; the menu closes once an item is picked, a drag up or down scrolls a long menu, and a tap on the canvas closes an open menu
 
 ## 0.24.0
