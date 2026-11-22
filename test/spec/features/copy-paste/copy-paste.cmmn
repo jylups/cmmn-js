@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cmmn:definitions xmlns:dc="http://www.omg.org/spec/CMMN/20151109/DC" xmlns:di="http://www.omg.org/spec/CMMN/20151109/DI" xmlns:cmmndi="http://www.omg.org/spec/CMMN/20151109/CMMNDI" xmlns:cmmn="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:flowable="http://flowable.org/cmmn" xmlns:design="http://flowable.org/design" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CopyPaste" targetNamespace="http://flowable.org/cmmn">
+  <cmmn:case id="Case_1">
+    <cmmn:casePlanModel id="CasePlanModel_1" name="Plan">
+      <cmmn:planItem id="PI_Task_1" definitionRef="Task_1">
+        <cmmn:itemControl>
+          <cmmn:requiredRule />
+        </cmmn:itemControl>
+        <cmmn:entryCriterion id="EntryCriterion_1" sentryRef="Sentry_1" />
+      </cmmn:planItem>
+      <cmmn:planItem id="PI_EventListener_1" definitionRef="EventListener_1" name="Listener" />
+      <cmmn:planItem id="PI_Stage_1" definitionRef="Stage_1" />
+      <cmmn:sentry id="Sentry_1">
+        <cmmn:planItemOnPart id="PlanItemOnPart_1" sourceRef="PI_EventListener_1">
+          <cmmn:standardEvent>occur</cmmn:standardEvent>
+        </cmmn:planItemOnPart>
+        <cmmn:ifPart id="IfPart_1">
+          <cmmn:condition id="Expression_1">${approved}</cmmn:condition>
+        </cmmn:ifPart>
+      </cmmn:sentry>
+      <cmmn:processTask id="Task_1" name="Report" flowable:sameDeployment="true">
+        <cmmn:extensionElements>
+          <flowable:in sourceExpression="${firstName}" target="firstName" />
+          <design:stencilid><![CDATA[ProcessTask]]></design:stencilid>
+        </cmmn:extensionElements>
+      </cmmn:processTask>
+      <cmmn:eventListener id="EventListener_1" name="Event" />
+      <cmmn:stage id="Stage_1" name="Review">
+        <cmmn:planItem id="PI_Inner" definitionRef="Inner" />
+        <cmmn:humanTask id="Inner" name="Check" />
+      </cmmn:stage>
+    </cmmn:casePlanModel>
+  </cmmn:case>
+  <cmmndi:CMMNDI>
+    <cmmndi:CMMNDiagram di:id="Diagram_1">
+      <cmmndi:CMMNShape di:id="DI_CasePlanModel_1" cmmnElementRef="CasePlanModel_1">
+        <dc:Bounds x="25" y="25" width="800" height="500" />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape di:id="DI_PI_Task_1" cmmnElementRef="PI_Task_1">
+        <dc:Bounds x="100" y="100" width="100" height="80" />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape di:id="EntryCriterion_1_di" cmmnElementRef="EntryCriterion_1">
+        <dc:Bounds x="190" y="126" width="20" height="28" />
+        <cmmndi:CMMNLabel />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape di:id="PI_EventListener_1_di" cmmnElementRef="PI_EventListener_1">
+        <dc:Bounds x="267" y="121" width="36" height="36" />
+        <cmmndi:CMMNLabel>
+          <dc:Bounds x="240" y="157" width="90" height="20" />
+        </cmmndi:CMMNLabel>
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNEdge di:id="PlanItemOnPart_1_di" cmmnElementRef="PlanItemOnPart_1" targetCMMNElementRef="EntryCriterion_1" isStandardEventVisible="true">
+        <di:waypoint xsi:type="dc:Point" x="267" y="139" />
+        <di:waypoint xsi:type="dc:Point" x="210" y="140" />
+        <cmmndi:CMMNLabel>
+          <dc:Bounds x="192" y="129.5" width="90" height="20" />
+        </cmmndi:CMMNLabel>
+      </cmmndi:CMMNEdge>
+      <cmmndi:CMMNShape di:id="DI_PI_Stage_1" cmmnElementRef="PI_Stage_1">
+        <dc:Bounds x="100" y="250" width="300" height="200" />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape di:id="DI_PI_Inner" cmmnElementRef="PI_Inner">
+        <dc:Bounds x="150" y="300" width="100" height="80" />
+      </cmmndi:CMMNShape>
+    </cmmndi:CMMNDiagram>
+  </cmmndi:CMMNDI>
+</cmmn:definitions>
