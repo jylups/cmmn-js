@@ -251,6 +251,198 @@ describe('features - touch', function() {
       expect(directEditing.isActive()).to.be.false;
     }));
 
+
+
+    describe('palette menus', function() {
+
+      /** Where a point of the diagram is on the screen. */
+      function clientPoint(canvas, x, y) {
+        var box = canvas._svg.getBoundingClientRect(),
+            viewbox = canvas.viewbox();
+
+        return {
+          x: box.left + (x - viewbox.x) * viewbox.scale,
+          y: box.top + (y - viewbox.y) * viewbox.scale
+        };
+      }
+
+      function tapAt(position) {
+        finger(document.elementFromPoint(position.x, position.y), position).lift();
+      }
+
+      function openTasks(canvas) {
+        canvas._container.scrollIntoView();
+
+        tap(canvas._container.querySelector('.djs-palette [data-action="create.tasks"]'));
+      }
+
+      function menuEntry(id) {
+        return document.querySelector('.djs-popup [data-id="' + id + '"]');
+      }
+
+      function milestones(elementRegistry) {
+        return elementRegistry.filter(function(element) {
+          return element.businessObject.definitionRef &&
+            element.businessObject.definitionRef.$type === 'cmmn:Milestone';
+        });
+      }
+
+
+      it('should open a group menu with a tap', inject(function(canvas, popupMenu) {
+
+        // when
+        openTasks(canvas);
+
+        // then
+        expect(popupMenu.isOpen()).to.be.true;
+        expect(menuEntry('create-milestone')).to.exist;
+      }));
+
+
+      it('should place an item: tap it, then tap the canvas', inject(
+        function(canvas, popupMenu, elementRegistry, dragging) {
+
+          // given
+          openTasks(canvas);
+
+          // when
+          tap(menuEntry('create-milestone'));
+
+          // then: the menu closes and the milestone follows the next touch
+          expect(popupMenu.isOpen()).to.be.false;
+          expect(dragging.context()).to.exist;
+
+          // when
+          tapAt(clientPoint(canvas, 380, 230));
+
+          // then
+          var created = milestones(elementRegistry);
+
+          expect(created).to.have.length(1);
+          expect(created[0].parent.id).to.equal('CasePlanModel_1');
+          expect(dragging.context()).not.to.exist;
+        }
+      ));
+
+
+      it('should create an item dragged from the menu', inject(
+        function(canvas, popupMenu, elementRegistry, dragging) {
+
+          // given
+          openTasks(canvas);
+
+          var entry = menuEntry('create-milestone'),
+              start = point(entry),
+              end = clientPoint(canvas, 380, 230);
+
+          // when
+          var touch = finger(entry, start);
+          touch.moveBy(end.x - start.x, end.y - start.y, 10);
+          touch.lift();
+
+          // then
+          expect(milestones(elementRegistry)).to.have.length(1);
+          expect(dragging.context()).not.to.exist;
+          expect(popupMenu.isOpen()).to.be.false;
+        }
+      ));
+
+
+      it('should finish a drag from the menu while the canvas scrolls', inject(
+        function(canvas, popupMenu, elementRegistry, dragging, selection) {
+
+          // given: a selected shape, whose context pad closes as the drag starts
+          selection.select(elementRegistry.get('PI_Task_1'));
+
+          openTasks(canvas);
+
+          var entry = menuEntry('create-milestone'),
+              start = point(entry),
+              end = clientPoint(canvas, 380, 230);
+
+          // when: the canvas scrolls under the drag, as near its edge
+          var touch = finger(entry, start);
+          touch.moveBy((end.x - start.x) / 2, (end.y - start.y) / 2, 5);
+
+          canvas.scroll({ dx: -10, dy: 0 });
+
+          touch.moveBy((end.x - start.x) / 2, (end.y - start.y) / 2, 5);
+          touch.lift();
+
+          // then: the menu stayed for the drag, which ended with a milestone
+          expect(milestones(elementRegistry)).to.have.length(1);
+          expect(dragging.context()).not.to.exist;
+          expect(popupMenu.isOpen()).to.be.false;
+        }
+      ));
+
+
+      it('should scroll a long menu, not create, with a drag up or down', inject(
+        function(canvas, popupMenu, elementRegistry, dragging) {
+
+          // given: a list longer than the menu
+          openTasks(canvas);
+
+          var list = document.querySelector('.djs-popup .djs-popup-results');
+          list.style.maxHeight = '80px';
+          list.scrollTop = 0;
+
+          var entry = menuEntry('create-human-task');
+
+          // when
+          var touch = finger(entry, point(entry));
+          touch.moveBy(2, -40, 5);
+          touch.lift();
+
+          // then
+          expect(dragging.context()).not.to.exist;
+          expect(elementRegistry.filter(function(element) {
+            return element.type === 'cmmn:PlanItem';
+          })).to.have.length(2);
+          expect(popupMenu.isOpen()).to.be.true;
+          expect(list.scrollTop).to.be.above(0);
+        }
+      ));
+
+
+      it('should create from a short menu with a drag down', inject(
+        function(canvas, elementRegistry, dragging) {
+
+          // given: the two entries of the containers menu
+          canvas._container.scrollIntoView();
+          tap(canvas._container.querySelector('.djs-palette [data-action="create.containers"]'));
+
+          var entry = menuEntry('create-stage'),
+              start = point(entry),
+              end = { x: start.x + 10, y: start.y + 60 };
+
+          // when
+          var touch = finger(entry, start);
+          touch.moveBy(end.x - start.x, end.y - start.y, 10);
+
+          // then: the stage follows the finger
+          expect(dragging.context()).to.exist;
+          expect(dragging.context().prefix).to.equal('create');
+
+          dragging.cancel();
+        }
+      ));
+
+
+      it('should close an open menu with a tap on the canvas', inject(function(canvas, popupMenu) {
+
+        // given
+        openTasks(canvas);
+
+        // when
+        tapAt(clientPoint(canvas, 380, 240));
+
+        // then
+        expect(popupMenu.isOpen()).to.be.false;
+      }));
+
+    });
+
   });
 
 
