@@ -6,6 +6,8 @@ All notable changes to [@jylups/cmmn-js](https://github.com/jylups/cmmn-js) are 
 
 ___Note:__ Yet to be released changes appear here._
 
+* `FEAT`: copy, cut and paste of CMMN elements ([Conscia-LLC/conscia-modeler#102](https://github.com/Conscia-LLC/conscia-modeler/issues/102)), on diagram-js's copy-paste: a pasted plan item gets a new definition, a criterion a new sentry (with its if-part), an on-part connection a new on-part to the pasted source; a stage comes with its content; Flowable extension elements and attributes are copied deep, those of unknown namespaces too; on-parts and connections to elements outside the copy are dropped; the case plan model can't be copied. The `copy`, `cut`, `paste` and `duplicate` editor actions and Cmd/Ctrl + C, X, V
+
 ## 0.24.1
 
 * `FIX`: on touch screens, create the items of the palette's group menus ([jylups/cmmn-js-env#96](https://github.com/jylups/cmmn-js-env/issues/96)): tap an item and then the canvas, or drag it onto the canvas; the menu closes once an item is picked, a drag up or down scrolls a long menu, and a tap on the canvas closes an open menu

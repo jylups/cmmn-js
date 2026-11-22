@@ -221,6 +221,10 @@ describe('Modeler', function() {
       var expectedActions = [
         'undo',
         'redo',
+        'copy',
+        'duplicate',
+        'paste',
+        'cut',
         'stepZoom',
         'zoom',
         'removeSelection',
