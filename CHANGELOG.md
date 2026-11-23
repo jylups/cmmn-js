@@ -6,6 +6,8 @@ All notable changes to [@jylups/cmmn-js](https://github.com/jylups/cmmn-js) are 
 
 ___Note:__ Yet to be released changes appear here._
 
+* `FEAT`: on touch screens, two fingers moving together pan the diagram, also over a shape, and a pinch pans as it zooms ([Conscia-LLC/conscia-modeler#124](https://github.com/Conscia-LLC/conscia-modeler/issues/124)); one finger still selects, drags shapes and pans on empty space
+
 ## 0.25.0
 
 * `FEAT`: copy, cut and paste of CMMN elements ([Conscia-LLC/conscia-modeler#102](https://github.com/Conscia-LLC/conscia-modeler/issues/102)), on diagram-js's copy-paste: a pasted plan item gets a new definition, a criterion a new sentry (with its if-part), an on-part connection a new on-part to the pasted source; a stage comes with its content; Flowable extension elements and attributes are copied deep, those of unknown namespaces too; on-parts and connections to elements outside the copy are dropped; the case plan model can't be copied. The `copy`, `cut`, `paste` and `duplicate` editor actions and Cmd/Ctrl + C, X, V

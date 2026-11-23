@@ -216,6 +216,53 @@ describe('features - touch', function() {
     }));
 
 
+    it('should pan with two fingers, also on a shape', inject(function(canvas, elementRegistry) {
+
+      // given: two fingers down on a task
+      var svg = canvas._svg,
+          target = hit(elementRegistry, 'PI_Task_1'),
+          centre = point(target),
+          task = elementRegistry.get('PI_Task_1'),
+          x = task.x,
+          y = task.y,
+          zoom = canvas.zoom(),
+          before = canvas.viewbox();
+
+      var ids = [ nextId++, nextId++ ],
+          starts = [ { x: centre.x - 20, y: centre.y }, { x: centre.x + 20, y: centre.y } ];
+
+      function touches(dx, dy) {
+        return starts.map(function(start, i) {
+          return createTouch(target, { x: start.x + dx, y: start.y + dy }, ids[i]);
+        });
+      }
+
+      fire(target, 'touchstart', touches(0, 0).slice(0, 1));
+      fire(target, 'touchstart', touches(0, 0), touches(0, 0).slice(1));
+
+      // when: both move together
+      for (var i = 1; i <= 5; i++) {
+        fire(target, 'touchmove', touches(-80 * i / 5, -50 * i / 5));
+      }
+
+      var last = touches(-80, -50);
+
+      fire(target, 'touchend', last.slice(0, 1), last.slice(1));
+      fire(target, 'touchend', [], last.slice(0, 1));
+
+      // then: the diagram moved under the fingers; the task and the zoom stayed
+      var after = canvas.viewbox();
+
+      expect(canvas.zoom()).to.be.closeTo(zoom, 0.001);
+      expect((after.x - before.x) * zoom).to.be.closeTo(80, 2);
+      expect((after.y - before.y) * zoom).to.be.closeTo(50, 2);
+      expect(task.x).to.equal(x);
+      expect(task.y).to.equal(y);
+
+      expect(svg).to.exist;
+    }));
+
+
     it('should edit a label with a double tap', inject(function(elementRegistry, directEditing) {
 
       // given
