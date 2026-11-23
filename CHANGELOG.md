@@ -6,6 +6,8 @@ All notable changes to [@jylups/cmmn-js](https://github.com/jylups/cmmn-js) are 
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.25.1
+
 * `FEAT`: on touch screens, two fingers moving together pan the diagram, also over a shape, and a pinch pans as it zooms ([Conscia-LLC/conscia-modeler#124](https://github.com/Conscia-LLC/conscia-modeler/issues/124)); one finger still selects, drags shapes and pans on empty space
 
 ## 0.25.0
