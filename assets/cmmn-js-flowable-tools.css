@@ -1,0 +1,88 @@
+/**
+ * The look of the context pad tools modules, as in Flowable Design, on top of
+ * diagram-js.css and cmmn-js-flowable.css:
+ * - lib/features/context-pad-tools: the tools left of the selected shape, the
+ *   append actions right of it;
+ * - the selection: a blue dashed outline, and round handles at the corners of
+ *   a shape that can be resized (lib/features/plan-item-resize);
+ * - lib/features/palette-toggle: the button above the palette.
+ *
+ * The canvas stays light in both themes, so these use light colours.
+ */
+
+/* the context pad split around the selected shape: the tools group hangs
+   left of the shape, out of the pad's flow (see ContextPadPosition.js) */
+.djs-container .djs-context-pad.split {
+  grid-template-columns: auto;
+}
+
+.djs-container .djs-context-pad.split > .group[data-group="edit"] {
+  position: absolute;
+  top: 0;
+  right: calc(100% + var(--context-pad-span, 0px));
+}
+
+.djs-container .djs-context-pad.split > .group:not([data-group="edit"]) {
+  grid-column: 1;
+}
+
+/* the selection: a blue dashed outline, and round resize handles */
+.djs-container.djs-parent {
+  --element-selected-outline-stroke-color: #3b82f6;
+  --resizer-fill-color: #3b82f6;
+  --resizer-stroke-color: #ffffff;
+}
+
+.djs-container .djs-element.selected .djs-outline {
+  stroke-width: 1px;
+  stroke-dasharray: 4 3;
+}
+
+.djs-container .djs-resizer-visual {
+  rx: 50%;
+  ry: 50%;
+}
+
+/* the palette's button, above the palette; it goes next to the canvas's
+   container, so their common parent is where both are placed from */
+.cjs-palette-toggle {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  z-index: 10;
+  width: 48px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid hsl(225, 10%, 75%);
+  border-radius: 2px;
+  background: hsl(225, 10%, 97%);
+  color: hsl(225, 10%, 15%);
+  font: 22px/1 system-ui, -apple-system, sans-serif;
+}
+
+.cjs-palette-toggle:hover {
+  background: hsl(225, 10%, 92%);
+}
+
+.djs-container.cjs-palette-toggle-on .djs-palette {
+  top: 54px;
+}
+
+/* the button replaces diagram-js's own toggle */
+.djs-container.cjs-palette-toggle-on .djs-palette-toggle {
+  display: none !important;
+}
+
+.djs-container.cjs-palette-collapsed .djs-palette {
+  display: none;
+}
+
+@media (pointer: coarse) {
+  .cjs-palette-toggle {
+    height: 36px;
+  }
+
+  .djs-container.cjs-palette-toggle-on .djs-palette {
+    top: 62px;
+  }
+}

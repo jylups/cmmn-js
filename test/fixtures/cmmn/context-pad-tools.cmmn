@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cmmn:definitions xmlns:dc="http://www.omg.org/spec/CMMN/20151109/DC" xmlns:di="http://www.omg.org/spec/CMMN/20151109/DI" xmlns:cmmndi="http://www.omg.org/spec/CMMN/20151109/CMMNDI" xmlns:cmmn="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:flowable="http://flowable.org/cmmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="ContextPadTools" targetNamespace="http://flowable.org/cmmn">
+  <cmmn:case id="Case_1">
+    <cmmn:casePlanModel id="CasePlanModel_1" name="Plan">
+      <cmmn:planItem id="PI_Task_1" definitionRef="Task_1">
+        <cmmn:entryCriterion id="EntryCriterion_1" sentryRef="Sentry_1" />
+      </cmmn:planItem>
+      <cmmn:planItem id="PI_Listener_1" definitionRef="Listener_1" />
+      <cmmn:planItem id="PI_Milestone_1" definitionRef="Milestone_1" />
+      <cmmn:planItem id="PI_Stage_1" definitionRef="Stage_1" />
+      <cmmn:planItem id="PI_Collapsed_1" definitionRef="Collapsed_1" />
+      <cmmn:sentry id="Sentry_1">
+        <cmmn:planItemOnPart id="PlanItemOnPart_1" sourceRef="PI_Listener_1">
+          <cmmn:standardEvent>occur</cmmn:standardEvent>
+        </cmmn:planItemOnPart>
+      </cmmn:sentry>
+      <cmmn:humanTask id="Task_1" name="Review" />
+      <cmmn:eventListener id="Listener_1" name="Event" />
+      <cmmn:milestone id="Milestone_1" name="Done" />
+      <cmmn:stage id="Stage_1" name="Stage" />
+      <cmmn:stage id="Collapsed_1" name="Collapsed" />
+    </cmmn:casePlanModel>
+  </cmmn:case>
+  <cmmndi:CMMNDI>
+    <cmmndi:CMMNDiagram di:id="Diagram_1">
+      <cmmndi:CMMNShape di:id="DI_CasePlanModel_1" cmmnElementRef="CasePlanModel_1">
+        <dc:Bounds x="150" y="25" width="900" height="560" />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape di:id="DI_PI_Task_1" cmmnElementRef="PI_Task_1">
+        <dc:Bounds x="400" y="100" width="100" height="80" />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape di:id="DI_EntryCriterion_1" cmmnElementRef="EntryCriterion_1">
+        <dc:Bounds x="390" y="126" width="20" height="28" />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape di:id="DI_PI_Listener_1" cmmnElementRef="PI_Listener_1">
+        <dc:Bounds x="250" y="122" width="36" height="36" />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNEdge di:id="DI_PlanItemOnPart_1" cmmnElementRef="PlanItemOnPart_1" targetCMMNElementRef="EntryCriterion_1">
+        <di:waypoint xsi:type="dc:Point" x="286" y="140" />
+        <di:waypoint xsi:type="dc:Point" x="390" y="140" />
+      </cmmndi:CMMNEdge>
+      <cmmndi:CMMNShape di:id="DI_PI_Milestone_1" cmmnElementRef="PI_Milestone_1">
+        <dc:Bounds x="600" y="120" width="100" height="40" />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape di:id="DI_PI_Stage_1" cmmnElementRef="PI_Stage_1">
+        <dc:Bounds x="400" y="250" width="300" height="150" />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape di:id="DI_PI_Collapsed_1" cmmnElementRef="PI_Collapsed_1" isCollapsed="true">
+        <dc:Bounds x="800" y="250" width="100" height="80" />
+      </cmmndi:CMMNShape>
+    </cmmndi:CMMNDiagram>
+  </cmmndi:CMMNDI>
+</cmmn:definitions>
