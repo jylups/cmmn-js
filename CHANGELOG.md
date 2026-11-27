@@ -6,6 +6,8 @@ All notable changes to [@jylups/cmmn-js](https://github.com/jylups/cmmn-js) are 
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.26.1
+
 * `FIX`: a pasted plan item's criteria are the pasted criteria, with their new sentries ([jylups/cmmn-lens#46](https://github.com/jylups/cmmn-lens/issues/46)); since 0.25.0 the plan item kept copies of the original criteria, still on the original sentries, and the diagram's criteria were missing from the saved model
 
 ## 0.26.0
