@@ -35,6 +35,9 @@ cp('assets/cmmn-js-touch.css', dest + '/assets');
 console.log('copy cmmn-js-flowable.css to ' + dest);
 cp('assets/cmmn-js-flowable.css', dest + '/assets');
 
+console.log('copy cmmn-js-flowable-tools.css to ' + dest);
+cp('assets/cmmn-js-flowable-tools.css', dest + '/assets');
+
 bundle(dest, {
   'cmmn-viewer': 'lib/Viewer.js',
   'cmmn-navigated-viewer': 'lib/NavigatedViewer.js',

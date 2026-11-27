@@ -137,6 +137,38 @@ Include `assets/cmmn-js-touch.css` too (also in `dist/assets`), for larger touch
 
 The gestures come from [bpmn-js-touch-interaction](https://github.com/krasucki/bpmn-js-touch-interaction) (MIT, see `lib/features/touch/LICENSE`).
 
+### Context pad tools
+
+The context pad and palette of Flowable Design come as optional modules for the modeler, contributed by Conscia LLC under the MIT License:
+
+```javascript
+var Modeler = require('@jylups/cmmn-js/lib/Modeler');
+
+var modeler = new Modeler({
+  container: '#canvas',
+  additionalModules: [
+    require('@jylups/cmmn-js/lib/features/context-pad-clipboard'),
+    require('@jylups/cmmn-js/lib/features/context-pad-tools'),
+    require('@jylups/cmmn-js/lib/features/plan-item-resize'),
+    require('@jylups/cmmn-js/lib/features/palette-toggle'),
+    require('@jylups/cmmn-js/lib/features/context-pad-help')
+  ],
+  contextPadPosition: { visibleRight: function() { return Infinity; } },
+  paletteToggle: { open: true },
+  help: { open: function(url) { window.open(url, '_blank', 'noopener'); } }
+});
+```
+
+Include `assets/cmmn-js-flowable-tools.css` too (also in `dist/assets`), after `cmmn-js-flowable.css`.
+
+- **`context-pad-clipboard`:** Copy and Cut in a shape's tools, and Paste in the case plan's and an expanded stage's tools while something is copied, so a touch screen can copy and paste without a keyboard. Replace the `contextPadClipboardRules` service (`{ canCopy(element), canPasteInto(element) }`) to change what shows where, and the `clipboard` service to share one clipboard between modelers.
+- **`context-pad-tools`:** the tools (change type, connect, copy, cut, paste, delete, help) together in Flowable Design's order, left of the selected shape, and the append actions right of it; the pad stays on screen. `contextPadPosition.visibleRight()` gives the screen x where the visible canvas ends, for a host that covers part of it.
+- **`plan-item-resize`:** tasks and milestones resizable from their corners, as stages are, down to 60 x 40 and 60 x 24.
+- **`palette-toggle`:** a button above the palette that collapses it and shows it again. `paletteToggle` takes `open` (the start state), `onToggle(open)` (for a host that keeps one state for several modelers and calls `paletteToggle.set(open)` on each), `parent` (where the button goes; the container's parent by default) and `labels` (`{ collapse, show }`). It fires `paletteToggle.changed`.
+- **`context-pad-help`:** Help opens the page that explains the element, Flowable's CMMN reference page for its type. `help` takes `open(url, element)` (a new browser tab by default), `url(element)` (your own pages; null for none) and `title`.
+
+`context-pad-tools` and `palette-toggle` use only diagram-js, so a bpmn-js modeler can load them too, and the other two with its own rules and pages.
+
 ### Dynamic Attach/Detach
 
 You may attach or detach the viewer dynamically to any element on the page, too:

@@ -6,6 +6,8 @@ All notable changes to [@jylups/cmmn-js](https://github.com/jylups/cmmn-js) are 
 
 ___Note:__ Yet to be released changes appear here._
 
+* `FEAT`: the context pad tools of Flowable Design as optional modules, contributed by Conscia LLC under the MIT License ([jylups/cmmn-js-env#99](https://github.com/jylups/cmmn-js-env/issues/99)): Copy, Cut and Paste in the context pad (`context-pad-clipboard`), the tools left of the shape in Flowable Design's order with the pad kept on screen (`context-pad-tools`), tasks and milestones resizable from their corners (`plan-item-resize`), a button that collapses the palette (`palette-toggle`) and Help to Flowable's reference pages (`context-pad-help`); their look in `assets/cmmn-js-flowable-tools.css`
+
 ## 0.25.1
 
 * `FEAT`: on touch screens, two fingers moving together pan the diagram, also over a shape, and a pinch pans as it zooms ([Conscia-LLC/conscia-modeler#124](https://github.com/Conscia-LLC/conscia-modeler/issues/124)); one finger still selects, drags shapes and pans on empty space
