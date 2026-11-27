@@ -6,6 +6,8 @@ All notable changes to [@jylups/cmmn-js](https://github.com/jylups/cmmn-js) are 
 
 ___Note:__ Yet to be released changes appear here._
 
+* `FIX`: a pasted plan item's criteria are the pasted criteria, with their new sentries ([jylups/cmmn-lens#46](https://github.com/jylups/cmmn-lens/issues/46)); since 0.25.0 the plan item kept copies of the original criteria, still on the original sentries, and the diagram's criteria were missing from the saved model
+
 ## 0.26.0
 
 * `FEAT`: the context pad tools of Flowable Design as optional modules, contributed by Conscia LLC under the MIT License ([jylups/cmmn-js-env#99](https://github.com/jylups/cmmn-js-env/issues/99)): Copy, Cut and Paste in the context pad (`context-pad-clipboard`), the tools left of the shape in Flowable Design's order with the pad kept on screen (`context-pad-tools`), tasks and milestones resizable from their corners (`plan-item-resize`), a button that collapses the palette (`palette-toggle`) and Help to Flowable's reference pages (`context-pad-help`); their look in `assets/cmmn-js-flowable-tools.css`
