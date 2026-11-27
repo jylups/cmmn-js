@@ -142,6 +142,77 @@ describe('features/copy-paste', function() {
   });
 
 
+  it('should paste a plan item with its criterion, the same in the model and the diagram', function(done) {
+
+    // given
+    copy([ 'PI_Task_1' ]);
+
+    // when
+    var pasted = paste();
+
+    // then
+    var item = byType(pasted, 'cmmn:PlanItem')[0].businessObject,
+        criterionShape = byType(pasted, 'cmmn:EntryCriterion')[0],
+        criterion = criterionShape.businessObject;
+
+    expect(item.entryCriteria).to.eql([ criterion ]);
+    expect(criterion.$parent).to.equal(item);
+    expect(criterion.di.cmmnElementRef).to.equal(criterion);
+    expect(criterion.sentryRef.id).not.to.equal('Sentry_1');
+    expect(plan.businessObject.sentries).to.include(criterion.sentryRef);
+
+    // and the saved model reads back without problems
+    inject(function(cmmnjs) {
+      cmmnjs.saveXML({ format: true }, function(err, xml) {
+        if (err) {
+          return done(err);
+        }
+
+        cmmnjs.importXML(xml, function(err, warnings) {
+          if (err) {
+            return done(err);
+          }
+
+          try {
+            expect(warnings.map(function(w) { return w.message; })).to.eql([]);
+            done();
+          } catch (e) {
+            done(e);
+          }
+        });
+      });
+    })();
+  });
+
+
+  it('should undo and redo a pasted criterion with its host and sentry', inject(function(commandStack) {
+
+    // given
+    var sentries = plan.businessObject.sentries.slice();
+
+    copy([ 'PI_Task_1' ]);
+
+    var pasted = paste(),
+        item = byType(pasted, 'cmmn:PlanItem')[0].businessObject,
+        criterion = byType(pasted, 'cmmn:EntryCriterion')[0].businessObject;
+
+    // when
+    commandStack.undo();
+
+    // then
+    expect(plan.businessObject.planItems).not.to.include(item);
+    expect(plan.businessObject.sentries).to.eql(sentries);
+
+    // when
+    commandStack.redo();
+
+    // then
+    expect(plan.businessObject.planItems).to.include(item);
+    expect(item.entryCriteria).to.eql([ criterion ]);
+    expect(plan.businessObject.sentries).to.include(criterion.sentryRef);
+  }));
+
+
   it('should undo a paste in one step', inject(function(commandStack) {
 
     // given
